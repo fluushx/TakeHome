@@ -18,9 +18,21 @@ final class BirdPresenter: BirdPresenterProtocol {
         self.interactor = interactor
         self.router = router
     }
+    func fetchBirdDataAsync() async {
+        view?.showLoading()
+        do {
+           _ = try await interactor.fetchBirdDataAsync()
+            view?.hideLoading()
+        } catch {
+            view?.hideLoading()
+            view?.showError()
+        }
+    }
 }
 
 // MARK: - BirdViewPresenterProtocol
 extension BirdPresenter: BirdViewPresenterProtocol {
-    
+    func getBirdData() -> [BirdModel] {
+        interactor.getBirdData()
+    }
 }

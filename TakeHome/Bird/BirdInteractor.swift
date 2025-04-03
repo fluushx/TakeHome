@@ -20,4 +20,12 @@ final class BirdInteractor: BirdInteractorProtocol {
 
 // MARK: - BirdPresenterInteractorProtocol
 extension BirdInteractor: BirdPresenterInteractorProtocol {
+    func fetchBirdDataAsync() async throws -> [BirdModel] {
+        let birds = try await (cloudDataSource).fetchBirdDataAsync()
+        localDataSource.setBirdData(birds)
+        return birds
+    }
+    func getBirdData() -> [BirdModel] {
+        localDataSource.getBirdData()
+    }
 }

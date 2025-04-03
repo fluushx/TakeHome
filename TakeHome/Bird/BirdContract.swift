@@ -20,10 +20,15 @@ protocol BirdRouterProtocol: AnyObject {
 // MARK: - View
 protocol BirdViewProtocol: AnyObject {
     var presenter: BirdViewPresenterProtocol? { get set }
+    func showLoading()
+    func hideLoading()
+    func showError()
 }
 
 // MARK: - View -> Presenter
 protocol BirdViewPresenterProtocol: AnyObject {
+    func fetchBirdDataAsync() async
+    func getBirdData() -> [BirdModel]
 }
 
 // MARK: - Presenter
@@ -35,6 +40,8 @@ protocol BirdPresenterProtocol: AnyObject {
 
 // MARK: - Presenter -> Interactor
 protocol BirdPresenterInteractorProtocol: AnyObject {
+    func fetchBirdDataAsync() async throws -> [BirdModel]
+    func getBirdData() -> [BirdModel]
 }
 
 // MARK: - Interactor
@@ -48,9 +55,13 @@ protocol BirdRepositoryProtocol {
 
 // MARK: - Local Data Source
 protocol BirdLocalDataSourceProtocol {
+    func setBirdData(_ birdData: [BirdModel])
+    func getBirdData() -> [BirdModel]
+    
 }
 
 // MARK: - Cloud Data Source
 protocol BirdCloudDataSourceProtocol {
+    func fetchBirdDataAsync() async throws -> [BirdModel]
 }
 

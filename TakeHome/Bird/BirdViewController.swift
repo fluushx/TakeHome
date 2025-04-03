@@ -17,9 +17,27 @@ extension BirdViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .red
+        fetchBirdData()
+        
+    }
+    func fetchBirdData() {
+        Task { [weak self] in
+            await self?.presenter?.fetchBirdDataAsync()
+            let data = self?.presenter?.getBirdData() ?? []
+            print("Datos obtenidos: \(data)")
+        }
     }
 }
 
 // MARK: BirdViewProtocol
 extension BirdViewController: BirdViewProtocol {
+    func showError() {
+        print("showError")
+    }
+    func showLoading() {
+        print("showLoading")
+    }
+    func hideLoading() {
+        print("hideLoading")
+    }
 }
