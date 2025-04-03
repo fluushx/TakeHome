@@ -14,7 +14,6 @@ class ViewController: UIViewController {
     client.fetch(query: GraphQL.BirdsQuery()) { result in
         do {
             let response = try result.get()
-            print(response.data?.birds)
         } catch {
             print("Error al obtener los datos: \(error)")
         }
