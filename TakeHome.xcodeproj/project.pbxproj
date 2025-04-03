@@ -27,6 +27,15 @@
 		2DB8FA2128AD40FA00DF01CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DB8FA2028AD40FA00DF01CC /* Assets.xcassets */; };
 		2DB8FA2428AD40FA00DF01CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DB8FA2228AD40FA00DF01CC /* LaunchScreen.storyboard */; };
 		348225162D9ED27C00094E58 /* Note.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348225152D9ED27B00094E58 /* Note.graphql.swift */; };
+		348225372D9EDB5400094E58 /* BirdCloudDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3482252E2D9EDB5400094E58 /* BirdCloudDataSource.swift */; };
+		348225382D9EDB5400094E58 /* BirdLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3482252F2D9EDB5400094E58 /* BirdLocalDataSource.swift */; };
+		348225392D9EDB5400094E58 /* BirdPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348225302D9EDB5400094E58 /* BirdPresenter.swift */; };
+		3482253A2D9EDB5400094E58 /* BirdConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348225312D9EDB5400094E58 /* BirdConstant.swift */; };
+		3482253B2D9EDB5400094E58 /* BirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348225322D9EDB5400094E58 /* BirdViewController.swift */; };
+		3482253C2D9EDB5400094E58 /* BirdRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348225332D9EDB5400094E58 /* BirdRouter.swift */; };
+		3482253D2D9EDB5400094E58 /* BirdFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348225342D9EDB5400094E58 /* BirdFactory.swift */; };
+		3482253E2D9EDB5400094E58 /* BirdInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348225352D9EDB5400094E58 /* BirdInteractor.swift */; };
+		3482253F2D9EDB5400094E58 /* BirdContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348225362D9EDB5400094E58 /* BirdContract.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +60,15 @@
 		2DB8FA2328AD40FA00DF01CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DB8FA2528AD40FA00DF01CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		348225152D9ED27B00094E58 /* Note.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.graphql.swift; sourceTree = "<group>"; };
+		3482252E2D9EDB5400094E58 /* BirdCloudDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BirdCloudDataSource.swift; sourceTree = "<group>"; };
+		3482252F2D9EDB5400094E58 /* BirdLocalDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BirdLocalDataSource.swift; sourceTree = "<group>"; };
+		348225302D9EDB5400094E58 /* BirdPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BirdPresenter.swift; sourceTree = "<group>"; };
+		348225312D9EDB5400094E58 /* BirdConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BirdConstant.swift; sourceTree = "<group>"; };
+		348225322D9EDB5400094E58 /* BirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BirdViewController.swift; sourceTree = "<group>"; };
+		348225332D9EDB5400094E58 /* BirdRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BirdRouter.swift; sourceTree = "<group>"; };
+		348225342D9EDB5400094E58 /* BirdFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BirdFactory.swift; sourceTree = "<group>"; };
+		348225352D9EDB5400094E58 /* BirdInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BirdInteractor.swift; sourceTree = "<group>"; };
+		348225362D9EDB5400094E58 /* BirdContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BirdContract.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +171,7 @@
 		2DB8FA1628AD40F900DF01CC /* TakeHome */ = {
 			isa = PBXGroup;
 			children = (
+				3482252C2D9EDB5400094E58 /* Viper */,
 				2D09E6852CCAD69300F19817 /* API */,
 				2DB8FA1728AD40F900DF01CC /* AppDelegate.swift */,
 				2DB8FA1928AD40F900DF01CC /* SceneDelegate.swift */,
@@ -162,6 +181,30 @@
 				2DB8FA2528AD40FA00DF01CC /* Info.plist */,
 			);
 			path = TakeHome;
+			sourceTree = "<group>";
+		};
+		3482252C2D9EDB5400094E58 /* Viper */ = {
+			isa = PBXGroup;
+			children = (
+				3482252D2D9EDB5400094E58 /* DataSource */,
+				348225302D9EDB5400094E58 /* BirdPresenter.swift */,
+				348225312D9EDB5400094E58 /* BirdConstant.swift */,
+				348225322D9EDB5400094E58 /* BirdViewController.swift */,
+				348225332D9EDB5400094E58 /* BirdRouter.swift */,
+				348225342D9EDB5400094E58 /* BirdFactory.swift */,
+				348225352D9EDB5400094E58 /* BirdInteractor.swift */,
+				348225362D9EDB5400094E58 /* BirdContract.swift */,
+			);
+			path = Viper;
+			sourceTree = "<group>";
+		};
+		3482252D2D9EDB5400094E58 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				3482252E2D9EDB5400094E58 /* BirdCloudDataSource.swift */,
+				3482252F2D9EDB5400094E58 /* BirdLocalDataSource.swift */,
+			);
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,20 +283,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DB8FA1C28AD40F900DF01CC /* ViewController.swift in Sources */,
+				3482253D2D9EDB5400094E58 /* BirdFactory.swift in Sources */,
 				2DB8FA1828AD40F900DF01CC /* AppDelegate.swift in Sources */,
+				3482253C2D9EDB5400094E58 /* BirdRouter.swift in Sources */,
 				2D09E6892CCAD87700F19817 /* birds.graphql in Sources */,
+				348225392D9EDB5400094E58 /* BirdPresenter.swift in Sources */,
 				2D09E6962CCAD8E100F19817 /* SchemaMetadata.graphql.swift in Sources */,
 				2D09E6972CCAD8E100F19817 /* SchemaConfiguration.swift in Sources */,
 				2D09E6A12CCADA6B00F19817 /* AddNoteMutation.graphql.swift in Sources */,
 				2D09E6982CCAD8E100F19817 /* Query.graphql.swift in Sources */,
+				348225372D9EDB5400094E58 /* BirdCloudDataSource.swift in Sources */,
 				2D09E6992CCAD8E100F19817 /* BirdsQuery.graphql.swift in Sources */,
 				2D09E6A52CCADC3C00F19817 /* GraphQLClient.swift in Sources */,
+				3482253E2D9EDB5400094E58 /* BirdInteractor.swift in Sources */,
+				3482253B2D9EDB5400094E58 /* BirdViewController.swift in Sources */,
 				2D09E69A2CCAD8E100F19817 /* ID.swift in Sources */,
+				3482253A2D9EDB5400094E58 /* BirdConstant.swift in Sources */,
 				2D09E69B2CCAD8E100F19817 /* Bird.graphql.swift in Sources */,
 				2D09E69C2CCAD8E100F19817 /* GraphQL.graphql.swift in Sources */,
 				348225162D9ED27C00094E58 /* Note.graphql.swift in Sources */,
+				3482253F2D9EDB5400094E58 /* BirdContract.swift in Sources */,
 				2D09E6A32CCADAA800F19817 /* Mutation.graphql.swift in Sources */,
 				2DB8FA1A28AD40F900DF01CC /* SceneDelegate.swift in Sources */,
+				348225382D9EDB5400094E58 /* BirdLocalDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
