@@ -8,11 +8,16 @@ class ViewController: UIViewController {
     super.viewDidLoad()
 
     client = createClient(
-      accessToken: "YOUR_ACCESS_TOKEN",
+      accessToken: "cXdP3HwiAio1trBSPdWA",
       url: URL(string: "https://takehome.graphql.copilot.money")!
     )
     client.fetch(query: GraphQL.BirdsQuery()) { result in
-      print(result)
+        do {
+            let response = try result.get()
+            print(response.data?.birds)
+        } catch {
+            print("Error al obtener los datos: \(error)")
+        }
     }
   }
 }

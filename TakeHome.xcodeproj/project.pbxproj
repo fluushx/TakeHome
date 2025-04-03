@@ -26,6 +26,7 @@
 		2DB8FA1C28AD40F900DF01CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB8FA1B28AD40F900DF01CC /* ViewController.swift */; };
 		2DB8FA2128AD40FA00DF01CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DB8FA2028AD40FA00DF01CC /* Assets.xcassets */; };
 		2DB8FA2428AD40FA00DF01CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DB8FA2228AD40FA00DF01CC /* LaunchScreen.storyboard */; };
+		348225162D9ED27C00094E58 /* Note.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348225152D9ED27B00094E58 /* Note.graphql.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		2DB8FA2028AD40FA00DF01CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2DB8FA2328AD40FA00DF01CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DB8FA2528AD40FA00DF01CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		348225152D9ED27B00094E58 /* Note.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.graphql.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		2D09E6922CCAD8E100F19817 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				348225152D9ED27B00094E58 /* Note.graphql.swift */,
 				2D09E6902CCAD8E100F19817 /* Bird.graphql.swift */,
 				2D09E6A22CCADAA800F19817 /* Mutation.graphql.swift */,
 				2D09E6912CCAD8E100F19817 /* Query.graphql.swift */,
@@ -248,6 +251,7 @@
 				2D09E69A2CCAD8E100F19817 /* ID.swift in Sources */,
 				2D09E69B2CCAD8E100F19817 /* Bird.graphql.swift in Sources */,
 				2D09E69C2CCAD8E100F19817 /* GraphQL.graphql.swift in Sources */,
+				348225162D9ED27C00094E58 /* Note.graphql.swift in Sources */,
 				2D09E6A32CCADAA800F19817 /* Mutation.graphql.swift in Sources */,
 				2DB8FA1A28AD40F900DF01CC /* SceneDelegate.swift in Sources */,
 			);
