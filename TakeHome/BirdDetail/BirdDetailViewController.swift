@@ -11,7 +11,6 @@ import UIKit
 final class BirdDetailViewController: UIViewController {
     var presenter: BirdDetailViewPresenterProtocol?
     private var headerHeightConstraint: NSLayoutConstraint!
-    
     lazy var headerView: BirdDetailHeaderView = {
         let header = BirdDetailHeaderView(frame: .zero)
         header.translatesAutoresizingMaskIntoConstraints = false
@@ -23,7 +22,8 @@ final class BirdDetailViewController: UIViewController {
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.delegate = self
         tv.dataSource = self
-        tv.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tv.register(BirdDetailViewCell.self, forCellReuseIdentifier: BirdDetailViewCell.reuseIdentifier)
+        tv.separatorStyle = .none
         return tv
     }()
     
@@ -110,9 +110,11 @@ extension BirdDetailViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-         cell.textLabel?.text = "Elemento \(indexPath.row + 1)"
-         return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: BirdDetailViewCell.reuseIdentifier, for: indexPath) as? BirdDetailViewCell else {
+            return UITableViewCell()
+        }
+        cell.setUpLabel(comment: "I saw it last week in North Carolina!")
+        return cell
     }
     
     // Actualizamos el tamaño de la imagen y la altura del header conforme se hace scroll.
