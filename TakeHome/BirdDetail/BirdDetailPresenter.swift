@@ -24,7 +24,9 @@ final class BirdDetailPresenter: BirdDetailPresenterProtocol {
 extension BirdDetailPresenter: BirdDetailViewPresenterProtocol {
     func goToAddNote() {
         let notes = interactor.getNotes()
+        let birdId = interactor.getBirdId()
         router?.goToAddNote(
+            birdId: birdId,
             notes: notes
         )
         

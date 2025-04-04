@@ -8,12 +8,6 @@
 import Apollo
 import UIKit
 
-// MARK: - FetchErrorEnum
-
-enum FetchError: Error {
-    case noData
-}
-
 // MARK: - BirdCloudDataSource
 final class BirdCloudDataSource: BirdCloudDataSourceProtocol {
     var client: ApolloClient!

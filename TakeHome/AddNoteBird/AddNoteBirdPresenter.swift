@@ -26,5 +26,15 @@ extension AddNoteBirdPresenter: AddNoteBirdViewPresenterProtocol {
         router?.dismissModule()
     }
     
-    
+    func callAddNote(comment: String) async {
+        do {
+            let birdId = interactor.getBirdId()
+            _ = try await interactor.callAddNoteBirdAsync(
+                birdId: birdId,
+                comment: comment
+            )
+        } catch {
+            print("error adding note")
+        }
+    }
 }

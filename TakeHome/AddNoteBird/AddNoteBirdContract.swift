@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - Factory
 protocol AddNoteBirdFactoryProtocol {
-    static func initialize(notes: [Note])-> AddNoteBirdViewController
+    static func initialize(birdId: String, notes: [Note])-> AddNoteBirdViewController
 }
 
 // MARK: - Router
@@ -26,6 +26,7 @@ protocol AddNoteBirdViewProtocol: AnyObject {
 // MARK: - View -> Presenter
 protocol AddNoteBirdViewPresenterProtocol: AnyObject {
     func dismissModule()
+    func callAddNote(comment: String) async
 }
 
 // MARK: - Presenter
@@ -37,6 +38,8 @@ protocol AddNoteBirdPresenterProtocol: AnyObject {
 
 // MARK: - Presenter -> Interactor
 protocol AddNoteBirdPresenterInteractorProtocol: AnyObject {
+    func callAddNoteBirdAsync(birdId: String, comment: String) async throws -> Bool
+    func getBirdId() -> String
 }
 
 // MARK: - Interactor
@@ -50,9 +53,11 @@ protocol AddNoteBirdRepositoryProtocol {
 
 // MARK: - Local Data Source
 protocol AddNoteBirdLocalDataSourceProtocol {
+    func getBirdId() -> String
 }
 
 // MARK: - Cloud Data Source
 protocol AddNoteBirdCloudDataSourceProtocol {
+    func callAddNoteBirdAsync(birdId: String, comment: String, timestamp: Int) async throws -> Bool
 }
 
