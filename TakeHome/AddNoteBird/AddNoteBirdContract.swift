@@ -9,12 +9,13 @@ import UIKit
 
 // MARK: - Factory
 protocol AddNoteBirdFactoryProtocol {
-    static func initialize() -> AddNoteBirdViewController
+    static func initialize(notes: [Note])-> AddNoteBirdViewController
 }
 
 // MARK: - Router
 protocol AddNoteBirdRouterProtocol: AnyObject {
     var view: UIViewController? { get set }
+    func dismissModule()
 }
 
 // MARK: - View
@@ -24,6 +25,7 @@ protocol AddNoteBirdViewProtocol: AnyObject {
 
 // MARK: - View -> Presenter
 protocol AddNoteBirdViewPresenterProtocol: AnyObject {
+    func dismissModule()
 }
 
 // MARK: - Presenter

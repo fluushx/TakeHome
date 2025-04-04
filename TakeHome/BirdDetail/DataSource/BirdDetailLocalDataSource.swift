@@ -7,4 +7,13 @@
 
 // MARK: - BirdDetailLocalDataSource
 final class BirdDetailLocalDataSource: BirdDetailLocalDataSourceProtocol {
+    var notes = [Note]()
+    
+    init(notes: [Note] = [Note]()) {
+        self.notes = notes
+    }
+    
+    func getNotes() -> [Note] {
+        return notes
+    }
 }

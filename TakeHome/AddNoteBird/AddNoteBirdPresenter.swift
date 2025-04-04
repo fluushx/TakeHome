@@ -22,5 +22,9 @@ final class AddNoteBirdPresenter: AddNoteBirdPresenterProtocol {
 
 // MARK: - AddNoteBirdViewPresenterProtocol
 extension AddNoteBirdPresenter: AddNoteBirdViewPresenterProtocol {
+    func dismissModule() {
+        router?.dismissModule()
+    }
+    
     
 }

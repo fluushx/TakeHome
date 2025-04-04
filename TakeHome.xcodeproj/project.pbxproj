@@ -229,11 +229,11 @@
 				348225432D9F111300094E58 /* Components */,
 				348225402D9EDFD400094E58 /* Entities */,
 				3482252D2D9EDB5400094E58 /* DataSource */,
-				348225302D9EDB5400094E58 /* BirdPresenter.swift */,
-				348225322D9EDB5400094E58 /* BirdViewController.swift */,
 				348225332D9EDB5400094E58 /* BirdRouter.swift */,
-				348225342D9EDB5400094E58 /* BirdFactory.swift */,
 				348225352D9EDB5400094E58 /* BirdInteractor.swift */,
+				348225342D9EDB5400094E58 /* BirdFactory.swift */,
+				348225322D9EDB5400094E58 /* BirdViewController.swift */,
+				348225302D9EDB5400094E58 /* BirdPresenter.swift */,
 				348225362D9EDB5400094E58 /* BirdContract.swift */,
 			);
 			path = Bird;
@@ -273,8 +273,8 @@
 				348225542D9F1CD800094E58 /* BirdDetailConstant.swift */,
 				348225552D9F1CD800094E58 /* BirdDetailViewController.swift */,
 				348225562D9F1CD800094E58 /* BirdDetailFactory.swift */,
-				348225572D9F1CD800094E58 /* BirdDetailContract.swift */,
 				348225582D9F1CD800094E58 /* BirdDetailRouter.swift */,
+				348225572D9F1CD800094E58 /* BirdDetailContract.swift */,
 			);
 			path = BirdDetail;
 			sourceTree = "<group>";

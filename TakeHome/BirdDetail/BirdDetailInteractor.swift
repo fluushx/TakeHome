@@ -20,4 +20,7 @@ final class BirdDetailInteractor: BirdDetailInteractorProtocol {
 
 // MARK: - BirdDetailPresenterInteractorProtocol
 extension BirdDetailInteractor: BirdDetailPresenterInteractorProtocol {
+    func getNotes() -> [Note] {
+        localDataSource.getNotes()
+    }
 }

@@ -23,6 +23,16 @@ final class BirdDetailPresenter: BirdDetailPresenterProtocol {
 // MARK: - BirdDetailViewPresenterProtocol
 extension BirdDetailPresenter: BirdDetailViewPresenterProtocol {
     func goToAddNote() {
-        router?.goToAddNote()
+        let notes = interactor.getNotes()
+        router?.goToAddNote(
+            notes: notes
+        )
+        
+    }
+    func getNotes() -> [Note] {
+        interactor.getNotes()
+    }
+    func dismissModule() {
+        router?.dismissModule(completion: nil)
     }
 }

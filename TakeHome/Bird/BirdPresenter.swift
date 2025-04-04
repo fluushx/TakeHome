@@ -37,5 +37,6 @@ extension BirdPresenter: BirdViewPresenterProtocol {
     }
     func didSelectBird(_ birdData: BirdModel) {
         router?.presentBirdDetail(birdData)
+        
     }
 }

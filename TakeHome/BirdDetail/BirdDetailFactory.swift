@@ -8,7 +8,7 @@
 // MARK: - BirdDetailFactory
 public class BirdDetailFactory: BirdDetailFactoryProtocol {
     static func initialize(selectedBird: BirdModel) -> BirdDetailViewController {
-        let interactor = BirdDetailInteractor(localDataSource: BirdDetailLocalDataSource(),
+        let interactor = BirdDetailInteractor(localDataSource: BirdDetailLocalDataSource(notes: selectedBird.notes ?? []),
                                                               cloudDataSource: BirdDetailCloudDataSource())
 
         let router = BirdDetailRouter()

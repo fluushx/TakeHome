@@ -47,7 +47,20 @@ final class BirdDetailViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 8
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapGoToAddNote), for: .touchUpInside)
+        return button
+    }()
+    let navBarView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    let backButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Atrás", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(didTapBackAction), for: .touchUpInside)
         return button
     }()
 
@@ -58,11 +71,21 @@ extension BirdDetailViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .yellow
-        
         view.addSubview(imageView)
         view.addSubview(mainStackView)
         view.addSubview(addNoteButton)
+        view.addSubview(navBarView)
+        navBarView.addSubview(backButton)
+         
         NSLayoutConstraint.activate([
+            navBarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            navBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            navBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            navBarView.heightAnchor.constraint(equalToConstant: 53),
+            
+            backButton.leadingAnchor.constraint(equalTo: navBarView.leadingAnchor, constant: 16),
+            backButton.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor),
+            
             imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
             imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
@@ -77,14 +100,15 @@ extension BirdDetailViewController {
             addNoteButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             addNoteButton.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             addNoteButton.heightAnchor.constraint(equalToConstant: 95)
-            
         ])
     }
-    @objc func handleButtonTap() {
+    @objc func didTapGoToAddNote() {
         print("Botón presionado")
         presenter?.goToAddNote()
     }
-
+    @objc func didTapBackAction() {
+        presenter?.dismissModule()
+    }
 }
 
 // MARK: BirdDetailViewProtocol

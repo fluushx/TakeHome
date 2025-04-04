@@ -11,8 +11,15 @@ import UIKit
 final class BirdDetailRouter: BirdDetailRouterProtocol {
     weak var view: UIViewController?
     
-    func goToAddNote(){
-        let birdDetailVC = AddNoteBirdFactory.initialize()
-        self.view?.navigationController?.present(birdDetailVC, animated: true)
+    func goToAddNote(notes: [Note]){
+        let birdDetailVC = AddNoteBirdFactory.initialize(notes: notes)
+        self.view?.present(birdDetailVC, animated: true)
+    }
+    func dismissModule(completion: (() -> Void)?) {
+        if let vc = view?.navigationController?.viewControllers.last(where: { $0.isKind(of: BirdViewController.self) }) {
+            view?.navigationController?.popToViewController(vc, animated: true)
+        } else {
+            view?.dismiss(animated: true, completion: nil)
+        }
     }
 }
