@@ -15,6 +15,7 @@ protocol BirdDetailFactoryProtocol {
 // MARK: - Router
 protocol BirdDetailRouterProtocol: AnyObject {
     var view: UIViewController? { get set }
+    func goToAddNote()
 }
 
 // MARK: - View
@@ -24,6 +25,7 @@ protocol BirdDetailViewProtocol: AnyObject {
 
 // MARK: - View -> Presenter
 protocol BirdDetailViewPresenterProtocol: AnyObject {
+    func goToAddNote()
 }
 
 // MARK: - Presenter

@@ -10,4 +10,9 @@ import UIKit
 // MARK: - BirdDetailRouter
 final class BirdDetailRouter: BirdDetailRouterProtocol {
     weak var view: UIViewController?
+    
+    func goToAddNote(){
+        let birdDetailVC = AddNoteBirdFactory.initialize()
+        self.view?.navigationController?.present(birdDetailVC, animated: true)
+    }
 }

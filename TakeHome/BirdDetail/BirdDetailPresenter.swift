@@ -22,5 +22,7 @@ final class BirdDetailPresenter: BirdDetailPresenterProtocol {
 
 // MARK: - BirdDetailViewPresenterProtocol
 extension BirdDetailPresenter: BirdDetailViewPresenterProtocol {
-    
+    func goToAddNote() {
+        router?.goToAddNote()
+    }
 }

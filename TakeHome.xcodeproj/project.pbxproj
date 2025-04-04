@@ -23,7 +23,6 @@
 		2D09E6A52CCADC3C00F19817 /* GraphQLClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D09E6A42CCADC3500F19817 /* GraphQLClient.swift */; };
 		2DB8FA1828AD40F900DF01CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB8FA1728AD40F900DF01CC /* AppDelegate.swift */; };
 		2DB8FA1A28AD40F900DF01CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB8FA1928AD40F900DF01CC /* SceneDelegate.swift */; };
-		2DB8FA1C28AD40F900DF01CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB8FA1B28AD40F900DF01CC /* ViewController.swift */; };
 		2DB8FA2128AD40FA00DF01CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DB8FA2028AD40FA00DF01CC /* Assets.xcassets */; };
 		2DB8FA2428AD40FA00DF01CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DB8FA2228AD40FA00DF01CC /* LaunchScreen.storyboard */; };
 		348225162D9ED27C00094E58 /* Note.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348225152D9ED27B00094E58 /* Note.graphql.swift */; };
@@ -47,6 +46,15 @@
 		3482255F2D9F1CD800094E58 /* BirdDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348225582D9F1CD800094E58 /* BirdDetailRouter.swift */; };
 		348225632D9F1D6A00094E58 /* BirdDetailCloudDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348225612D9F1D6A00094E58 /* BirdDetailCloudDataSource.swift */; };
 		348225642D9F1D6A00094E58 /* BirdDetailLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348225622D9F1D6A00094E58 /* BirdDetailLocalDataSource.swift */; };
+		34D524CB2DA00A0900C8961F /* AddNoteBirdCloudDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D524C22DA00A0900C8961F /* AddNoteBirdCloudDataSource.swift */; };
+		34D524CC2DA00A0900C8961F /* AddNoteBirdLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D524C32DA00A0900C8961F /* AddNoteBirdLocalDataSource.swift */; };
+		34D524CD2DA00A0900C8961F /* AddNoteBirdInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D524C42DA00A0900C8961F /* AddNoteBirdInteractor.swift */; };
+		34D524CE2DA00A0900C8961F /* AddNoteBirdRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D524C52DA00A0900C8961F /* AddNoteBirdRouter.swift */; };
+		34D524CF2DA00A0900C8961F /* AddNoteBirdConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D524C62DA00A0900C8961F /* AddNoteBirdConstant.swift */; };
+		34D524D02DA00A0900C8961F /* AddNoteBirdFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D524C72DA00A0900C8961F /* AddNoteBirdFactory.swift */; };
+		34D524D12DA00A0900C8961F /* AddNoteBirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D524C82DA00A0900C8961F /* AddNoteBirdViewController.swift */; };
+		34D524D22DA00A0900C8961F /* AddNoteBirdPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D524C92DA00A0900C8961F /* AddNoteBirdPresenter.swift */; };
+		34D524D32DA00A0900C8961F /* AddNoteBirdContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D524CA2DA00A0900C8961F /* AddNoteBirdContract.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,7 +74,6 @@
 		2DB8FA1428AD40F900DF01CC /* TakeHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TakeHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DB8FA1728AD40F900DF01CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DB8FA1928AD40F900DF01CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2DB8FA1B28AD40F900DF01CC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2DB8FA2028AD40FA00DF01CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2DB8FA2328AD40FA00DF01CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DB8FA2528AD40FA00DF01CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -91,6 +98,15 @@
 		348225582D9F1CD800094E58 /* BirdDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BirdDetailRouter.swift; sourceTree = "<group>"; };
 		348225612D9F1D6A00094E58 /* BirdDetailCloudDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BirdDetailCloudDataSource.swift; sourceTree = "<group>"; };
 		348225622D9F1D6A00094E58 /* BirdDetailLocalDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BirdDetailLocalDataSource.swift; sourceTree = "<group>"; };
+		34D524C22DA00A0900C8961F /* AddNoteBirdCloudDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNoteBirdCloudDataSource.swift; sourceTree = "<group>"; };
+		34D524C32DA00A0900C8961F /* AddNoteBirdLocalDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNoteBirdLocalDataSource.swift; sourceTree = "<group>"; };
+		34D524C42DA00A0900C8961F /* AddNoteBirdInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNoteBirdInteractor.swift; sourceTree = "<group>"; };
+		34D524C52DA00A0900C8961F /* AddNoteBirdRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNoteBirdRouter.swift; sourceTree = "<group>"; };
+		34D524C62DA00A0900C8961F /* AddNoteBirdConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNoteBirdConstant.swift; sourceTree = "<group>"; };
+		34D524C72DA00A0900C8961F /* AddNoteBirdFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNoteBirdFactory.swift; sourceTree = "<group>"; };
+		34D524C82DA00A0900C8961F /* AddNoteBirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNoteBirdViewController.swift; sourceTree = "<group>"; };
+		34D524C92DA00A0900C8961F /* AddNoteBirdPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNoteBirdPresenter.swift; sourceTree = "<group>"; };
+		34D524CA2DA00A0900C8961F /* AddNoteBirdContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNoteBirdContract.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,12 +209,12 @@
 		2DB8FA1628AD40F900DF01CC /* TakeHome */ = {
 			isa = PBXGroup;
 			children = (
+				34D524C02DA00A0900C8961F /* AddNoteBird */,
 				348225512D9F1CD800094E58 /* BirdDetail */,
 				3482252C2D9EDB5400094E58 /* Bird */,
 				2D09E6852CCAD69300F19817 /* API */,
 				2DB8FA1728AD40F900DF01CC /* AppDelegate.swift */,
 				2DB8FA1928AD40F900DF01CC /* SceneDelegate.swift */,
-				2DB8FA1B28AD40F900DF01CC /* ViewController.swift */,
 				2DB8FA2028AD40FA00DF01CC /* Assets.xcassets */,
 				2DB8FA2228AD40FA00DF01CC /* LaunchScreen.storyboard */,
 				2DB8FA2528AD40FA00DF01CC /* Info.plist */,
@@ -268,6 +284,30 @@
 			children = (
 				348225612D9F1D6A00094E58 /* BirdDetailCloudDataSource.swift */,
 				348225622D9F1D6A00094E58 /* BirdDetailLocalDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		34D524C02DA00A0900C8961F /* AddNoteBird */ = {
+			isa = PBXGroup;
+			children = (
+				34D524C12DA00A0900C8961F /* DataSource */,
+				34D524C42DA00A0900C8961F /* AddNoteBirdInteractor.swift */,
+				34D524C52DA00A0900C8961F /* AddNoteBirdRouter.swift */,
+				34D524C62DA00A0900C8961F /* AddNoteBirdConstant.swift */,
+				34D524C72DA00A0900C8961F /* AddNoteBirdFactory.swift */,
+				34D524C82DA00A0900C8961F /* AddNoteBirdViewController.swift */,
+				34D524C92DA00A0900C8961F /* AddNoteBirdPresenter.swift */,
+				34D524CA2DA00A0900C8961F /* AddNoteBirdContract.swift */,
+			);
+			path = AddNoteBird;
+			sourceTree = "<group>";
+		};
+		34D524C12DA00A0900C8961F /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				34D524C22DA00A0900C8961F /* AddNoteBirdCloudDataSource.swift */,
+				34D524C32DA00A0900C8961F /* AddNoteBirdLocalDataSource.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -347,7 +387,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DB8FA1C28AD40F900DF01CC /* ViewController.swift in Sources */,
 				3482253D2D9EDB5400094E58 /* BirdFactory.swift in Sources */,
 				2DB8FA1828AD40F900DF01CC /* AppDelegate.swift in Sources */,
 				3482253C2D9EDB5400094E58 /* BirdRouter.swift in Sources */,
@@ -357,6 +396,7 @@
 				2D09E6962CCAD8E100F19817 /* SchemaMetadata.graphql.swift in Sources */,
 				2D09E6972CCAD8E100F19817 /* SchemaConfiguration.swift in Sources */,
 				348225452D9F113D00094E58 /* BirdCollectionViewCell.swift in Sources */,
+				34D524CE2DA00A0900C8961F /* AddNoteBirdRouter.swift in Sources */,
 				3482255F2D9F1CD800094E58 /* BirdDetailRouter.swift in Sources */,
 				2D09E6A12CCADA6B00F19817 /* AddNoteMutation.graphql.swift in Sources */,
 				2D09E6982CCAD8E100F19817 /* Query.graphql.swift in Sources */,
@@ -366,18 +406,26 @@
 				3482255A2D9F1CD800094E58 /* BirdDetailPresenter.swift in Sources */,
 				2D09E6992CCAD8E100F19817 /* BirdsQuery.graphql.swift in Sources */,
 				348225632D9F1D6A00094E58 /* BirdDetailCloudDataSource.swift in Sources */,
+				34D524D02DA00A0900C8961F /* AddNoteBirdFactory.swift in Sources */,
 				2D09E6A52CCADC3C00F19817 /* GraphQLClient.swift in Sources */,
+				34D524CF2DA00A0900C8961F /* AddNoteBirdConstant.swift in Sources */,
+				34D524D32DA00A0900C8961F /* AddNoteBirdContract.swift in Sources */,
 				3482253E2D9EDB5400094E58 /* BirdInteractor.swift in Sources */,
+				34D524CB2DA00A0900C8961F /* AddNoteBirdCloudDataSource.swift in Sources */,
 				3482255D2D9F1CD800094E58 /* BirdDetailFactory.swift in Sources */,
 				3482253B2D9EDB5400094E58 /* BirdViewController.swift in Sources */,
 				2D09E69A2CCAD8E100F19817 /* ID.swift in Sources */,
+				34D524D12DA00A0900C8961F /* AddNoteBirdViewController.swift in Sources */,
 				3482253A2D9EDB5400094E58 /* BirdConstant.swift in Sources */,
 				2D09E69B2CCAD8E100F19817 /* Bird.graphql.swift in Sources */,
 				2D09E69C2CCAD8E100F19817 /* GraphQL.graphql.swift in Sources */,
 				348225592D9F1CD800094E58 /* BirdDetailInteractor.swift in Sources */,
 				348225162D9ED27C00094E58 /* Note.graphql.swift in Sources */,
 				3482253F2D9EDB5400094E58 /* BirdContract.swift in Sources */,
+				34D524CC2DA00A0900C8961F /* AddNoteBirdLocalDataSource.swift in Sources */,
+				34D524D22DA00A0900C8961F /* AddNoteBirdPresenter.swift in Sources */,
 				348225642D9F1D6A00094E58 /* BirdDetailLocalDataSource.swift in Sources */,
+				34D524CD2DA00A0900C8961F /* AddNoteBirdInteractor.swift in Sources */,
 				348225422D9EDFE900094E58 /* BirdModel.swift in Sources */,
 				2D09E6A32CCADAA800F19817 /* Mutation.graphql.swift in Sources */,
 				2DB8FA1A28AD40F900DF01CC /* SceneDelegate.swift in Sources */,
