@@ -10,4 +10,8 @@ import UIKit
 // MARK: - BirdRouter
 final class BirdRouter: BirdRouterProtocol {
     weak var view: UIViewController?
+    func presentBirdDetail(_ birdData: BirdModel) {
+        let birdDetailVC = BirdDetailFactory.initialize(selectedBird: birdData)
+        self.view?.navigationController?.present(birdDetailVC, animated: true)
+    }
 }

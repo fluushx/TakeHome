@@ -67,6 +67,10 @@ extension BirdViewController: UICollectionViewDataSource, UICollectionViewDelega
         cell.configure(with: bird)
         return cell
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedBird = data[indexPath.item]
+        presenter?.didSelectBird(selectedBird)
+    }
     
 }
 extension BirdViewController: UICollectionViewDelegateFlowLayout {

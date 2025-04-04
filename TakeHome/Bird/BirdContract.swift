@@ -15,6 +15,7 @@ protocol BirdFactoryProtocol {
 // MARK: - Router
 protocol BirdRouterProtocol: AnyObject {
     var view: UIViewController? { get set }
+    func presentBirdDetail(_ birdData: BirdModel)
 }
 
 // MARK: - View
@@ -29,6 +30,7 @@ protocol BirdViewProtocol: AnyObject {
 protocol BirdViewPresenterProtocol: AnyObject {
     func fetchBirdDataAsync() async
     func getBirdData() -> [BirdModel]
+    func didSelectBird(_ birdData: BirdModel)
 }
 
 // MARK: - Presenter
