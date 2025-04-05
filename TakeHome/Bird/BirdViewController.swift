@@ -3,7 +3,6 @@
 //  TakeHome
 //
 //  Created by Felipe I Zapata R on 03-04-25.
-//  Copyright (c) 2025 Falabella FIF. All rights reserved.
 
 import UIKit
 
@@ -21,6 +20,12 @@ final class BirdViewController: UIViewController {
         cv.register(BirdCollectionViewCell.self, forCellWithReuseIdentifier: BirdCollectionViewCell.reuseIdentifier)
         return cv
     }()
+    lazy var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.hidesWhenStopped = true
+        return indicator
+    }()
 }
 
 // MARK: View Life Cycle
@@ -29,11 +34,15 @@ extension BirdViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .red
         view.addSubview(collectionView)
+        view.addSubview(activityIndicator)
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
         
         collectionView.dataSource = self
@@ -110,10 +119,13 @@ extension BirdViewController: BirdViewProtocol {
         print("showError")
     }
     func showLoading() {
-        print("showLoading")
+        DispatchQueue.main.async {
+            self.activityIndicator.startAnimating()
+        }
     }
     func hideLoading() {
         DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
             self.collectionView.reloadData()
         }
     }

@@ -7,6 +7,8 @@ query birds {
     english_name
     notes {
       id
+      comment
+      timestamp
     }
   }
 }

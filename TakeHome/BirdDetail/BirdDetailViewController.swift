@@ -3,7 +3,6 @@
 //  TakeHome
 //
 //  Created by Felipe I Zapata R on 03-04-25.
-//  Copyright (c) 2025 Falabella FIF. All rights reserved.
 
 import UIKit
 
@@ -104,24 +103,24 @@ final class BirdDetailViewController: UIViewController {
 // MARK: - UITableViewDataSource & UITableViewDelegate
 extension BirdDetailViewController: UITableViewDataSource, UITableViewDelegate {
     
-    // Creamos 30 elementos simples para observar el scroll.
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         return 30
+        return presenter?.getNotes().count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: BirdDetailViewCell.reuseIdentifier, for: indexPath) as? BirdDetailViewCell else {
             return UITableViewCell()
         }
-        cell.setUpLabel(comment: "I saw it last week in North Carolina!")
+        let comment = presenter?.getNotes()[indexPath.row].comment ?? ""
+        cell.setUpLabel(comment: comment)
         return cell
     }
-    
-    // Actualizamos el tamaño de la imagen y la altura del header conforme se hace scroll.
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
          let offset = scrollView.contentOffset.y
          headerView.updateImageSize(scrollOffset: offset)
-         // Actualizamos la altura total del header basándonos en el contenido actual (imagen + subtítulo)
          headerHeightConstraint.constant = headerView.currentHeight()
     }
 }

@@ -3,7 +3,6 @@
 //  TakeHome
 //
 //  Created by Felipe I Zapata R on 03-04-25.
-//  Copyright (c) 2025 Falabella FIF. All rights reserved.
 //
 import Apollo
 import UIKit
@@ -39,7 +38,10 @@ final class BirdCloudDataSource: BirdCloudDataSourceProtocol {
                         englishName: bird.english_name,
                         notes: bird.notes.map {
                             Note(
-                                id: $0.id
+                                id: $0.id,
+                                comment: $0.comment,
+                                timestamp: $0.timestamp
+                                
                             )
                         }
                     )

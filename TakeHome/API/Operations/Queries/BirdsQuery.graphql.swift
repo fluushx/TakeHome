@@ -8,7 +8,7 @@ extension GraphQL {
     static let operationName: String = "birds"
     static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
-        #"query birds { birds { __typename id thumb_url image_url latin_name english_name notes { __typename id } } }"#
+        #"query birds { birds { __typename id thumb_url image_url latin_name english_name notes { __typename id comment timestamp } } }"#
       ))
 
     public init() {}
@@ -60,9 +60,13 @@ extension GraphQL {
           static var __selections: [ApolloAPI.Selection] { [
             .field("__typename", String.self),
             .field("id", GraphQL.ID.self),
+            .field("comment", String.self),
+            .field("timestamp", Int.self),
           ] }
 
           var id: GraphQL.ID { __data["id"] }
+          var comment: String { __data["comment"] }
+          var timestamp: Int { __data["timestamp"] }
         }
       }
     }

@@ -39,4 +39,6 @@ struct BirdModel: Codable {
 // MARK: - Modelo para Notas
 struct Note: Codable {
     let id: String?
+    let comment: String?
+    let timestamp: Int?
 }
