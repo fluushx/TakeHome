@@ -4,6 +4,8 @@
 //
 //  Created by Felipe I Zapata R on 03-04-25.
 
+import UIKit
+
 // MARK: - BirdDetailInteractor
 final class BirdDetailInteractor: BirdDetailInteractorProtocol {
     var localDataSource: BirdDetailLocalDataSourceProtocol
@@ -19,11 +21,7 @@ final class BirdDetailInteractor: BirdDetailInteractorProtocol {
 
 // MARK: - BirdDetailPresenterInteractorProtocol
 extension BirdDetailInteractor: BirdDetailPresenterInteractorProtocol {
-    func getBirdId() -> String {
-        localDataSource.getBirdId()
-    }
-    
-    func getNotes() -> [Notes] {
-        localDataSource.getNotes()
+    func getBirdDetailData() -> BirDetailDisplayModel {
+        localDataSource.getBirdDetailData()
     }
 }

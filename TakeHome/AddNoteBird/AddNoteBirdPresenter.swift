@@ -21,8 +21,15 @@ final class AddNoteBirdPresenter: AddNoteBirdPresenterProtocol {
 
 // MARK: - AddNoteBirdViewPresenterProtocol
 extension AddNoteBirdPresenter: AddNoteBirdViewPresenterProtocol {
+    func addNoteTitle() -> String {
+        interactor.addNoteTitle()
+    }
+    
     func dismissModule() {
         router?.dismissModule()
+    }
+    func getBirdImage() -> UIImage {
+        interactor.getBirdImage()
     }
     
     func callAddNote(comment: String) async {

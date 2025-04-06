@@ -121,13 +121,6 @@ extension BirdViewController: BirdViewProtocol {
     func hideLoading() {
         DispatchQueue.main.async {
             self.activityIndicator.stopAnimating()
-            for cell in self.collectionView.visibleCells {
-                if let birdCell = cell as? BirdCollectionViewCellProtocol {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                        birdCell.hideLoading()
-                    }
-                }
-            }
             self.collectionView.reloadData()
         }
     }

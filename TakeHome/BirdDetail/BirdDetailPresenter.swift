@@ -21,19 +21,32 @@ final class BirdDetailPresenter: BirdDetailPresenterProtocol {
 
 // MARK: - BirdDetailViewPresenterProtocol
 extension BirdDetailPresenter: BirdDetailViewPresenterProtocol {
+    func getBirdDetailData() -> BirDetailDisplayModel {
+        interactor.getBirdDetailData()
+    }
+    
     func goToAddNote() {
-        let notes = interactor.getNotes()
-        let birdId = interactor.getBirdId()
-        router?.goToAddNote(
+        let birdImage = interactor.getBirdDetailData().birdImage
+        let birdId = interactor.getBirdDetailData().birdId ?? ""
+        let birdTitle = interactor.getBirdDetailData().title ?? ""
+        let addNodeDataModel = AddNoteBirdDisplayModel(
             birdId: birdId,
-            notes: notes
+            birdImage: birdImage,
+            addNoteTitle: birdTitle
         )
+        router?.goToAddNote(addNoteDataModel: addNodeDataModel)
         
     }
     func getNotes() -> [Notes] {
-        interactor.getNotes()
+        interactor.getBirdDetailData().notes ?? []
     }
     func dismissModule() {
         router?.dismissModule(completion: nil)
+    }
+    func getBirdImage() -> UIImage {
+        interactor.getBirdDetailData().birdImage ?? UIImage()
+    }
+    func getTitleNav() -> String {
+        interactor.getBirdDetailData().title ?? ""
     }
 }

@@ -8,8 +8,13 @@
 import Foundation
 import UIKit
 
+// MARK: - BirdDetailHeaderProtocol
+protocol BirdDetailHeaderProtocol {
+    func configure(with image: UIImage)
+}
+
 // MARK: - BirdDetailHeaderView
-final class BirdDetailHeaderView: UIView {
+final class BirdDetailHeaderView: UIView, BirdDetailHeaderProtocol{
     
     let imageView: UIImageView = {
         let iv = UIImageView()
@@ -87,5 +92,8 @@ final class BirdDetailHeaderView: UIView {
         let subtitleHeight = subtitleLabel.intrinsicContentSize.height
         let currentImageHeight = imageHeightConstraint.constant
         return topMargin + currentImageHeight + spacing + subtitleHeight + bottomMargin
+    }
+    func configure(with image: UIImage) {
+        imageView.image = image
     }
 }

@@ -14,7 +14,7 @@ protocol BirdDetailFactoryProtocol {
 // MARK: - Router
 protocol BirdDetailRouterProtocol: AnyObject {
     var view: UIViewController? { get set }
-    func goToAddNote(birdId: String, notes: [Notes])
+    func goToAddNote(addNoteDataModel: AddNoteBirdDisplayModel)
     func dismissModule(completion: (() -> Void)?)
 }
 
@@ -28,6 +28,8 @@ protocol BirdDetailViewPresenterProtocol: AnyObject {
     func goToAddNote()
     func getNotes() -> [Notes]
     func dismissModule()
+    func getBirdImage() -> UIImage
+    func getTitleNav() -> String
 }
 
 // MARK: - Presenter
@@ -39,8 +41,7 @@ protocol BirdDetailPresenterProtocol: AnyObject {
 
 // MARK: - Presenter -> Interactor
 protocol BirdDetailPresenterInteractorProtocol: AnyObject {
-    func getNotes() -> [Notes]
-    func getBirdId() -> String
+    func getBirdDetailData() -> BirDetailDisplayModel
 }
 
 // MARK: - Interactor
@@ -54,8 +55,7 @@ protocol BirdDetailRepositoryProtocol {
 
 // MARK: - Local Data Source
 protocol BirdDetailLocalDataSourceProtocol {
-    func getNotes() -> [Notes]
-    func getBirdId() -> String
+    func getBirdDetailData() -> BirDetailDisplayModel
 }
 
 // MARK: - Cloud Data Source

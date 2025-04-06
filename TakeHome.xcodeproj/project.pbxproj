@@ -57,6 +57,8 @@
 		34D524DB2DA0585900C8961F /* AddNoteBirdModelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D524DA2DA0585900C8961F /* AddNoteBirdModelResponse.swift */; };
 		34D524DE2DA059CB00C8961F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D524DD2DA059CB00C8961F /* Utils.swift */; };
 		34EF6A252DA2EDD3001807AB /* BirdDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EF6A242DA2EDD3001807AB /* BirdDisplayModel.swift */; };
+		34EF6A2A2DA307DE001807AB /* BirDetailDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EF6A292DA307DE001807AB /* BirDetailDisplayModel.swift */; };
+		34EF6A2C2DA313A3001807AB /* AddNoteBirdDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EF6A2B2DA313A3001807AB /* AddNoteBirdDisplayModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +113,8 @@
 		34D524DA2DA0585900C8961F /* AddNoteBirdModelResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteBirdModelResponse.swift; sourceTree = "<group>"; };
 		34D524DD2DA059CB00C8961F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		34EF6A242DA2EDD3001807AB /* BirdDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdDisplayModel.swift; sourceTree = "<group>"; };
+		34EF6A292DA307DE001807AB /* BirDetailDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirDetailDisplayModel.swift; sourceTree = "<group>"; };
+		34EF6A2B2DA313A3001807AB /* AddNoteBirdDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteBirdDisplayModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +276,7 @@
 		348225512D9F1CD800094E58 /* BirdDetail */ = {
 			isa = PBXGroup;
 			children = (
+				34EF6A282DA307CF001807AB /* Entities */,
 				34D524D42DA048CE00C8961F /* Components */,
 				348225602D9F1D6A00094E58 /* DataSource */,
 				348225522D9F1CD800094E58 /* BirdDetailInteractor.swift */,
@@ -330,6 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				34D524DA2DA0585900C8961F /* AddNoteBirdModelResponse.swift */,
+				34EF6A2B2DA313A3001807AB /* AddNoteBirdDisplayModel.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -340,6 +346,14 @@
 				34D524DD2DA059CB00C8961F /* Utils.swift */,
 			);
 			path = Utis;
+			sourceTree = "<group>";
+		};
+		34EF6A282DA307CF001807AB /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				34EF6A292DA307DE001807AB /* BirDetailDisplayModel.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,7 +431,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34EF6A2C2DA313A3001807AB /* AddNoteBirdDisplayModel.swift in Sources */,
 				3482253D2D9EDB5400094E58 /* BirdFactory.swift in Sources */,
+				34EF6A2A2DA307DE001807AB /* BirDetailDisplayModel.swift in Sources */,
 				2DB8FA1828AD40F900DF01CC /* AppDelegate.swift in Sources */,
 				3482253C2D9EDB5400094E58 /* BirdRouter.swift in Sources */,
 				2D09E6892CCAD87700F19817 /* birds.graphql in Sources */,

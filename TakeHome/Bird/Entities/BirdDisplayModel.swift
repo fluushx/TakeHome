@@ -16,7 +16,8 @@ final class BirdDisplayModel {
     let englishName: String?
     let notes: [Notes]?
     var image: UIImage?
-    init(id: String?, thumbURL: URL?, imageURL: URL?, latinName: String?, englishName: String?, notes: [Notes]?, image: UIImage?) {
+    var isImageLoaded: Bool = false
+    init(id: String?, thumbURL: URL?, imageURL: URL?, latinName: String?, englishName: String?, notes: [Notes]?, image: UIImage?, isImageLoaded: Bool = false) {
         self.id = id
         self.thumbURL = thumbURL
         self.imageURL = imageURL
@@ -24,6 +25,7 @@ final class BirdDisplayModel {
         self.englishName = englishName
         self.notes = notes
         self.image = image
+        self.isImageLoaded = isImageLoaded
     }
 }
 final class Notes {

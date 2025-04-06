@@ -63,7 +63,6 @@ final class BirdCollectionViewCell: UICollectionViewCell, BirdCollectionViewCell
             activityIndicator.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
-        showLoading()
     }
     
     required init?(coder: NSCoder) {
@@ -75,7 +74,13 @@ final class BirdCollectionViewCell: UICollectionViewCell, BirdCollectionViewCell
             return
         }
         titleLabel.text = "\(englishName)"
-        imageView.image = bird.image
+    
+        if bird.isImageLoaded {
+            imageView.image = bird.image
+            hideLoading()
+        } else {
+            showLoading()
+        }
     }
 }
 

@@ -45,6 +45,15 @@ final class BirdDetailViewController: UIViewController {
         return view
     }()
     
+    lazy var navBarTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.textColor = .black
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
     let backButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Atrás", for: .normal)
@@ -56,8 +65,9 @@ final class BirdDetailViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .yellow
+        view.backgroundColor = .white
         view.addSubview(navBarView)
+        navBarView.addSubview(navBarTitleLabel)
         navBarView.addSubview(backButton)
         view.addSubview(headerView)
         view.addSubview(tableView)
@@ -70,6 +80,8 @@ final class BirdDetailViewController: UIViewController {
             navBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             navBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             navBarView.heightAnchor.constraint(equalToConstant: 53),
+            navBarTitleLabel.centerXAnchor.constraint(equalTo: navBarView.centerXAnchor),
+            navBarTitleLabel.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor),
             
             backButton.leadingAnchor.constraint(equalTo: navBarView.leadingAnchor, constant: 16),
             backButton.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor),
@@ -88,15 +100,21 @@ final class BirdDetailViewController: UIViewController {
             addNoteButton.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             addNoteButton.heightAnchor.constraint(equalToConstant: 95)
         ])
+        setUpHeaderView()
     }
     
     @objc func didTapGoToAddNote() {
-        print("Botón presionado")
         presenter?.goToAddNote()
     }
     
     @objc func didTapBackAction() {
         presenter?.dismissModule()
+    }
+    func setUpHeaderView() {
+        let image = presenter?.getBirdImage() ?? UIImage()
+        let title = presenter?.getTitleNav()
+        headerView.configure(with: image)
+        navBarTitleLabel.text = title
     }
 }
 

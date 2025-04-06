@@ -34,6 +34,7 @@ extension BirdPresenter: BirdViewPresenterProtocol {
                 // Cuando se completó la descarga de todos los lotes, se actualiza la vista y se oculta el loading
                 DispatchQueue.main.async {
                     self?.view?.updateBirdsDisplay(with: finalBirds)
+                   
                 }
             })
         }

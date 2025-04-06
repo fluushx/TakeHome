@@ -27,7 +27,6 @@ extension BirdInteractor: BirdPresenterInteractorProtocol {
                               batchSize: Int,
                               onBatch: @escaping ([BirdDisplayModel]) -> Void,
                               completion: @escaping ([BirdDisplayModel]) -> Void) {
-        // Creamos una copia mutable del array para poder actualizarla
         var mutableBirds = birds
         let endIndex = min(index + batchSize, mutableBirds.count)
         let group = DispatchGroup()
@@ -36,7 +35,13 @@ extension BirdInteractor: BirdPresenterInteractorProtocol {
             group.enter()
             if let imageURL = mutableBirds[i].imageURL {
                 cloudDataSource.downloadImage(for: imageURL) { image in
-                    mutableBirds[i].image = image ?? UIImage() // Asigna un placeholder si falla
+                    if let image = image {
+                        mutableBirds[i].image = image
+                        mutableBirds[i].isImageLoaded = true
+                    } else {
+                        mutableBirds[i].image = UIImage(named: "placeholder") ?? UIImage()
+                        mutableBirds[i].isImageLoaded = false
+                    }
                     group.leave()
                 }
             } else {
@@ -45,41 +50,37 @@ extension BirdInteractor: BirdPresenterInteractorProtocol {
         }
         
         group.notify(queue: DispatchQueue.main) {
-            // Notifica con el array actualizado hasta ahora
             onBatch(mutableBirds)
             if endIndex < mutableBirds.count {
-                // Procesamos el siguiente lote
                 self.processBatch(from: endIndex,
                                   birds: mutableBirds,
                                   batchSize: batchSize,
                                   onBatch: onBatch,
                                   completion: completion)
             } else {
-                // Se completó la descarga de todos los lotes
                 completion(mutableBirds)
             }
         }
     }
-        
-        // Función pública que descarga datos y procesa las imágenes en lotes
-        func fetchBirdDataWithImages(onBatch: @escaping ([BirdDisplayModel]) -> Void,
-                                     completion: @escaping ([BirdDisplayModel]) -> Void) {
-            cloudDataSource.fetchBirdData { result in
-                switch result {
-                case .success(let birds):
-                    self.processBatch(from: 0,
-                                      birds: birds,
-                                      batchSize: 10,
-                                      onBatch: onBatch) { [weak self] _ in
-                        self?.localDataSource.setBirdData(birds)
-                        completion(birds)
-                    }
-                case .failure(let error):
-                    print("Error fetching birds: \(error)")
-                    completion([])
+    
+    func fetchBirdDataWithImages(onBatch: @escaping ([BirdDisplayModel]) -> Void,
+                                 completion: @escaping ([BirdDisplayModel]) -> Void) {
+        cloudDataSource.fetchBirdData { result in
+            switch result {
+            case .success(let birds):
+                self.processBatch(from: 0,
+                                  birds: birds,
+                                  batchSize: 10,
+                                  onBatch: onBatch) { [weak self] _ in
+                    self?.localDataSource.setBirdData(birds)
+                    completion(birds)
                 }
+            case .failure(let error):
+                print("Error fetching birds: \(error)")
+                completion([])
             }
         }
+    }
     func getBirdData() -> [BirdDisplayModel] {
         localDataSource.getBirdData()
     }

@@ -6,9 +6,13 @@
 
 // MARK: - AddNoteBirdFactory
 public class AddNoteBirdFactory: AddNoteBirdFactoryProtocol {
-    static func initialize(birdId: String, notes: [Notes]) -> AddNoteBirdViewController {
-        let interactor = AddNoteBirdInteractor(localDataSource: AddNoteBirdLocalDataSource(birdId: birdId),
-                                                              cloudDataSource: AddNoteBirdCloudDataSource())
+    static func initialize(addNoteDataModel: AddNoteBirdDisplayModel) -> AddNoteBirdViewController {
+        let interactor = AddNoteBirdInteractor(
+            localDataSource: AddNoteBirdLocalDataSource(
+                addNoteDataModel: addNoteDataModel
+            ),
+            cloudDataSource: AddNoteBirdCloudDataSource()
+        )
 
         let router = AddNoteBirdRouter()
 

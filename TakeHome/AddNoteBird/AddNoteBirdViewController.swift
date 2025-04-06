@@ -26,6 +26,14 @@ final class AddNoteBirdViewController: UIViewController {
         button.addTarget(self, action: #selector(didTapBackAction), for: .touchUpInside)
         return button
     }()
+    lazy var navBarTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.textColor = .black
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     
     let imageView: UIImageView = {
         let iv = UIImageView()
@@ -42,6 +50,7 @@ final class AddNoteBirdViewController: UIViewController {
         tf.placeholder = "This is a new note"
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.returnKeyType = .done
+        tf.backgroundColor = .systemGray6
         return tf
     }()
 }
@@ -50,10 +59,11 @@ final class AddNoteBirdViewController: UIViewController {
 extension AddNoteBirdViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .green
+        self.view.backgroundColor = .white
         
         view.addSubview(navBarView)
         navBarView.addSubview(backButton)
+        navBarView.addSubview(navBarTitleLabel)
         view.addSubview(imageView)
         view.addSubview(textField)
         
@@ -65,6 +75,8 @@ extension AddNoteBirdViewController {
             navBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             navBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             navBarView.heightAnchor.constraint(equalToConstant: 53),
+            navBarTitleLabel.centerXAnchor.constraint(equalTo: navBarView.centerXAnchor),
+            navBarTitleLabel.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor),
             
             backButton.leadingAnchor.constraint(equalTo: navBarView.leadingAnchor, constant: 16),
             backButton.centerYAnchor.constraint(equalTo: navBarView.centerYAnchor),
@@ -79,7 +91,9 @@ extension AddNoteBirdViewController {
             textField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             textField.heightAnchor.constraint(equalToConstant: 150)
         ])
-        
+        let title = presenter?.addNoteTitle()
+        imageView.image = presenter?.getBirdImage()
+        navBarTitleLabel.text = title
         textField.becomeFirstResponder()
     }
     

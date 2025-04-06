@@ -5,6 +5,7 @@
 //  Created by Felipe I Zapata R on 04-04-25.
 
 import Foundation
+import UIKit
 
 // MARK: - AddNoteBirdInteractor
 final class AddNoteBirdInteractor: AddNoteBirdInteractorProtocol {
@@ -27,5 +28,11 @@ extension AddNoteBirdInteractor: AddNoteBirdPresenterInteractorProtocol {
     }
     func getBirdId() -> String {
         localDataSource.getBirdId()
+    }
+    func getBirdImage() -> UIImage {
+        localDataSource.getBirdImage()
+    }
+    func addNoteTitle() -> String {
+        localDataSource.addNoteTitle()
     }
 }
