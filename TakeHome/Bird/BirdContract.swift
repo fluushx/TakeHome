@@ -14,7 +14,7 @@ protocol BirdFactoryProtocol {
 // MARK: - Router
 protocol BirdRouterProtocol: AnyObject {
     var view: UIViewController? { get set }
-    func presentBirdDetail(_ birdData: BirdModel)
+    func presentBirdDetail(_ birdData: BirdDisplayModel)
 }
 
 // MARK: - View
@@ -23,13 +23,14 @@ protocol BirdViewProtocol: AnyObject {
     func showLoading()
     func hideLoading()
     func showError()
+    func updateBirdsDisplay(with birds: [BirdDisplayModel])
 }
 
 // MARK: - View -> Presenter
 protocol BirdViewPresenterProtocol: AnyObject {
-    func fetchBirdDataAsync() async
-    func getBirdData() -> [BirdModel]
-    func didSelectBird(_ birdData: BirdModel)
+    func fetchBirdData()
+    func getBirdData() -> [BirdDisplayModel]
+    func didSelectBird(_ birdData: BirdDisplayModel)
 }
 
 // MARK: - Presenter
@@ -41,8 +42,9 @@ protocol BirdPresenterProtocol: AnyObject {
 
 // MARK: - Presenter -> Interactor
 protocol BirdPresenterInteractorProtocol: AnyObject {
-    func fetchBirdDataAsync() async throws -> [BirdModel]
-    func getBirdData() -> [BirdModel]
+    func fetchBirdDataWithImages(onBatch: @escaping ([BirdDisplayModel]) -> Void,
+                                 completion: @escaping ([BirdDisplayModel]) -> Void)
+    func getBirdData() -> [BirdDisplayModel]
 }
 
 // MARK: - Interactor
@@ -56,13 +58,14 @@ protocol BirdRepositoryProtocol {
 
 // MARK: - Local Data Source
 protocol BirdLocalDataSourceProtocol {
-    func setBirdData(_ birdData: [BirdModel])
-    func getBirdData() -> [BirdModel]
+    func setBirdData(_ birdData: [BirdDisplayModel])
+    func getBirdData() -> [BirdDisplayModel]
     
 }
 
 // MARK: - Cloud Data Source
 protocol BirdCloudDataSourceProtocol {
-    func fetchBirdDataAsync() async throws -> [BirdModel]
+    func fetchBirdData(completion: @escaping (Result<[BirdDisplayModel], Error>) -> Void)
+    func downloadImage(for url: URL, completion: @escaping (UIImage?) -> Void)
 }
 

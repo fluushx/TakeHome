@@ -23,7 +23,7 @@ extension BirdDetailInteractor: BirdDetailPresenterInteractorProtocol {
         localDataSource.getBirdId()
     }
     
-    func getNotes() -> [Note] {
+    func getNotes() -> [Notes] {
         localDataSource.getNotes()
     }
 }

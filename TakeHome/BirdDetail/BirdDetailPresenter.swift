@@ -30,7 +30,7 @@ extension BirdDetailPresenter: BirdDetailViewPresenterProtocol {
         )
         
     }
-    func getNotes() -> [Note] {
+    func getNotes() -> [Notes] {
         interactor.getNotes()
     }
     func dismissModule() {

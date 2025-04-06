@@ -6,12 +6,12 @@
 
 // MARK: - BirdLocalDataSource
 final class BirdLocalDataSource: BirdLocalDataSourceProtocol {
-    var birdModel = [BirdModel]()
+    var birdModel = [BirdDisplayModel]()
     
-    func setBirdData(_ birdData: [BirdModel]) {
+    func setBirdData(_ birdData: [BirdDisplayModel]) {
         self.birdModel = birdData
     }
-    func getBirdData() -> [BirdModel] {
+    func getBirdData() -> [BirdDisplayModel] {
         return birdModel
     }
 }

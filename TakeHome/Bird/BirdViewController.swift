@@ -8,7 +8,7 @@ import UIKit
 
 // MARK: - BirdViewController
 final class BirdViewController: UIViewController {
-    var data = [BirdModel]()
+    var data = [BirdDisplayModel]()
 	var presenter: BirdViewPresenterProtocol?
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -50,14 +50,9 @@ extension BirdViewController {
         fetchBirdData()
     }
     func fetchBirdData() {
-        Task { [weak self] in
-            guard let strongSelf = self else {
-                return
-            }
-            await strongSelf.presenter?.fetchBirdDataAsync()
-            strongSelf.data = strongSelf.presenter?.getBirdData() ?? []
-        }
+        presenter?.fetchBirdData()
     }
+    
 }
 // MARK: - UICollectionViewDataSource & Delegate
 extension BirdViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -126,7 +121,17 @@ extension BirdViewController: BirdViewProtocol {
     func hideLoading() {
         DispatchQueue.main.async {
             self.activityIndicator.stopAnimating()
+            for cell in self.collectionView.visibleCells {
+                if let birdCell = cell as? BirdCollectionViewCellProtocol {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        birdCell.hideLoading()
+                    }
+                }
+            }
             self.collectionView.reloadData()
         }
     }
+    func updateBirdsDisplay(with birds: [BirdDisplayModel]) {
+           self.data = birds
+       }
 }

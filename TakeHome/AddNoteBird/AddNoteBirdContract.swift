@@ -8,7 +8,7 @@ import UIKit
 
 // MARK: - Factory
 protocol AddNoteBirdFactoryProtocol {
-    static func initialize(birdId: String, notes: [Note])-> AddNoteBirdViewController
+    static func initialize(birdId: String, notes: [Notes])-> AddNoteBirdViewController
 }
 
 // MARK: - Router

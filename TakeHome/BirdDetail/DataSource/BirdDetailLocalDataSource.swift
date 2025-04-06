@@ -6,14 +6,14 @@
 
 // MARK: - BirdDetailLocalDataSource
 final class BirdDetailLocalDataSource: BirdDetailLocalDataSourceProtocol {
-    var notes = [Note]()
-    var selectedBird: BirdModel?
+    var notes = [Notes]()
+    var selectedBird: BirdDisplayModel?
     
-    init(selectedBird: BirdModel?) {
+    init(selectedBird: BirdDisplayModel?) {
         self.selectedBird = selectedBird
     }
     
-    func getNotes() -> [Note] {
+    func getNotes() -> [Notes] {
         return selectedBird?.notes ?? []
     }
     func getBirdId() -> String {

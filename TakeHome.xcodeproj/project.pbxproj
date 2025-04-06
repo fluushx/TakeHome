@@ -56,6 +56,7 @@
 		34D524D82DA0540900C8961F /* BirdDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D524D72DA0540900C8961F /* BirdDetailViewCell.swift */; };
 		34D524DB2DA0585900C8961F /* AddNoteBirdModelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D524DA2DA0585900C8961F /* AddNoteBirdModelResponse.swift */; };
 		34D524DE2DA059CB00C8961F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D524DD2DA059CB00C8961F /* Utils.swift */; };
+		34EF6A252DA2EDD3001807AB /* BirdDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EF6A242DA2EDD3001807AB /* BirdDisplayModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +110,7 @@
 		34D524D72DA0540900C8961F /* BirdDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdDetailViewCell.swift; sourceTree = "<group>"; };
 		34D524DA2DA0585900C8961F /* AddNoteBirdModelResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteBirdModelResponse.swift; sourceTree = "<group>"; };
 		34D524DD2DA059CB00C8961F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		34EF6A242DA2EDD3001807AB /* BirdDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdDisplayModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				348225412D9EDFE900094E58 /* BirdModelResponse.swift */,
+				34EF6A242DA2EDD3001807AB /* BirdDisplayModel.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				2D09E6962CCAD8E100F19817 /* SchemaMetadata.graphql.swift in Sources */,
 				34D524DE2DA059CB00C8961F /* Utils.swift in Sources */,
 				2D09E6972CCAD8E100F19817 /* SchemaConfiguration.swift in Sources */,
+				34EF6A252DA2EDD3001807AB /* BirdDisplayModel.swift in Sources */,
 				348225452D9F113D00094E58 /* BirdCollectionViewCell.swift in Sources */,
 				34D524CE2DA00A0900C8961F /* AddNoteBirdRouter.swift in Sources */,
 				3482255F2D9F1CD800094E58 /* BirdDetailRouter.swift in Sources */,

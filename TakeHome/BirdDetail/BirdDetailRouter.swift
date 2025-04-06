@@ -10,7 +10,7 @@ import UIKit
 final class BirdDetailRouter: BirdDetailRouterProtocol {
     weak var view: UIViewController?
     
-    func goToAddNote(birdId: String, notes: [Note]){
+    func goToAddNote(birdId: String, notes: [Notes]){
         let birdDetailVC = AddNoteBirdFactory.initialize(
             birdId: birdId,
             notes: notes

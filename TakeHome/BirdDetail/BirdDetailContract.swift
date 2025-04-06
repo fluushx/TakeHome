@@ -8,13 +8,13 @@ import UIKit
 
 // MARK: - Factory
 protocol BirdDetailFactoryProtocol {
-    static func initialize(selectedBird: BirdModel) -> BirdDetailViewController
+    static func initialize(selectedBird: BirdDisplayModel) -> BirdDetailViewController
 }
 
 // MARK: - Router
 protocol BirdDetailRouterProtocol: AnyObject {
     var view: UIViewController? { get set }
-    func goToAddNote(birdId: String, notes: [Note])
+    func goToAddNote(birdId: String, notes: [Notes])
     func dismissModule(completion: (() -> Void)?)
 }
 
@@ -26,7 +26,7 @@ protocol BirdDetailViewProtocol: AnyObject {
 // MARK: - View -> Presenter
 protocol BirdDetailViewPresenterProtocol: AnyObject {
     func goToAddNote()
-    func getNotes() -> [Note]
+    func getNotes() -> [Notes]
     func dismissModule()
 }
 
@@ -39,7 +39,7 @@ protocol BirdDetailPresenterProtocol: AnyObject {
 
 // MARK: - Presenter -> Interactor
 protocol BirdDetailPresenterInteractorProtocol: AnyObject {
-    func getNotes() -> [Note]
+    func getNotes() -> [Notes]
     func getBirdId() -> String
 }
 
@@ -54,7 +54,7 @@ protocol BirdDetailRepositoryProtocol {
 
 // MARK: - Local Data Source
 protocol BirdDetailLocalDataSourceProtocol {
-    func getNotes() -> [Note]
+    func getNotes() -> [Notes]
     func getBirdId() -> String
 }
 

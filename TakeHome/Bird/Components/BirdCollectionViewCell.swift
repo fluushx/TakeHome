@@ -6,15 +6,30 @@
 //
 
 import UIKit
+protocol BirdCollectionViewCellProtocol {
+    func showLoading()
+    func hideLoading()
+    func configure(with bird: BirdDisplayModel)
+}
 
-final class BirdCollectionViewCell: UICollectionViewCell {
+final class BirdCollectionViewCell: UICollectionViewCell, BirdCollectionViewCellProtocol {
     static let reuseIdentifier = "BirdCollectionViewCell"
+    
+    private let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .medium)
+        indicator.hidesWhenStopped = true
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        return indicator
+    }()
     
     private let imageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.backgroundColor = .blue
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.isHidden = true
+
         return iv
     }()
     
@@ -23,6 +38,9 @@ final class BirdCollectionViewCell: UICollectionViewCell {
         label.font = UIFont.systemFont(ofSize: 16)
         label.textAlignment = .center
         label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.isHidden = true
+
         return label
     }()
     
@@ -30,10 +48,7 @@ final class BirdCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         contentView.addSubview(imageView)
         contentView.addSubview(titleLabel)
-        
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+        contentView.addSubview(activityIndicator)
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -43,32 +58,35 @@ final class BirdCollectionViewCell: UICollectionViewCell {
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 32),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -32),
             titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            titleLabel.heightAnchor.constraint(equalToConstant: 80),
             
-            titleLabel.heightAnchor.constraint(equalToConstant: 80)
+            activityIndicator.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
+        showLoading()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with bird: BirdModel) {
+    func configure(with bird: BirdDisplayModel) {
         guard let englishName = bird.englishName else {
             return
         }
         titleLabel.text = "\(englishName)"
-        imageView.image = nil
-        
-//        // TODO: Cargar imagenes
-//        if let url = bird.imageURL {
-//            DispatchQueue.global().async {
-//                if let data = try? Data(contentsOf: url),
-//                   let image = UIImage(data: data) {
-//                    DispatchQueue.main.async {
-//                        self.imageView.image = image
-//                    }
-//                }
-//            }
-//        }
+        imageView.image = bird.image
+    }
+}
+
+extension BirdCollectionViewCell {
+    func showLoading() {
+        activityIndicator.startAnimating()
+
+    }
+    func hideLoading() {
+        titleLabel.isHidden = false
+        imageView.isHidden = false
+        activityIndicator.stopAnimating()
     }
 }
