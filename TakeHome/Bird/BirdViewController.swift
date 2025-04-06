@@ -10,6 +10,21 @@ import UIKit
 final class BirdViewController: UIViewController {
     var data = [BirdDisplayModel]()
 	var presenter: BirdViewPresenterProtocol?
+    private lazy var searchController: UISearchController = {
+        let sc = UISearchController(searchResultsController: nil)
+        sc.searchResultsUpdater = self
+        sc.obscuresBackgroundDuringPresentation = false
+        sc.searchBar.delegate = self
+        sc.searchBar.placeholder = "Search"
+        
+        // Personalización para que la searchBar sea transparente
+        sc.searchBar.backgroundImage = UIImage()
+        sc.searchBar.isTranslucent = true
+        sc.searchBar.barTintColor = .clear
+        sc.searchBar.backgroundColor = .clear
+        sc.searchBar.isHidden = true
+        return sc
+    }()
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -33,6 +48,7 @@ extension BirdViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .red
+        setupSearchController()
         view.addSubview(collectionView)
         view.addSubview(activityIndicator)
         NSLayoutConstraint.activate([
@@ -120,6 +136,7 @@ extension BirdViewController: BirdViewProtocol {
     }
     func hideLoading() {
         DispatchQueue.main.async {
+            self.searchController.searchBar.isHidden = false
             self.activityIndicator.stopAnimating()
             self.collectionView.reloadData()
         }
@@ -128,3 +145,37 @@ extension BirdViewController: BirdViewProtocol {
            self.data = birds
        }
 }
+
+extension BirdViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    func setupSearchController() {
+        if let searchTextField = searchController.searchBar.value(forKey: "searchField") as? UITextField {
+            searchTextField.backgroundColor = UIColor(white: 1, alpha: 0.3)
+            searchTextField.alpha = 0.8
+            searchTextField.layer.cornerRadius = 10
+            searchTextField.clipsToBounds = true
+        }
+        
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text else { return }
+        filterContentForSearchText(searchText)
+    }
+    
+    func filterContentForSearchText(_ searchText: String) {
+        if searchText.isEmpty {
+            data = presenter?.getBirdData() ?? []
+        } else {
+            data = presenter?.getBirdData().filter { bird in
+                let englishMatch = bird.englishName?.localizedCaseInsensitiveContains(searchText) ?? false
+                let latinMatch = bird.latinName?.localizedCaseInsensitiveContains(searchText) ?? false
+                return englishMatch || latinMatch
+            } ?? []
+        }
+        collectionView.reloadData()
+    }
+}
+

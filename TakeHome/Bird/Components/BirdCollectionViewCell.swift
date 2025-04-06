@@ -40,7 +40,7 @@ final class BirdCollectionViewCell: UICollectionViewCell, BirdCollectionViewCell
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isHidden = true
-
+        label.textColor = .white
         return label
     }()
     
@@ -58,7 +58,7 @@ final class BirdCollectionViewCell: UICollectionViewCell, BirdCollectionViewCell
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 32),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -32),
             titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: 80),
+            titleLabel.heightAnchor.constraint(equalToConstant: 50),
             
             activityIndicator.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
