@@ -23,7 +23,12 @@ final class AddNoteBirdInteractor: AddNoteBirdInteractorProtocol {
 // MARK: - AddNoteBirdPresenterInteractorProtocol
 extension AddNoteBirdInteractor: AddNoteBirdPresenterInteractorProtocol {
     func callAddNoteBirdAsync(birdId: String, comment: String) async throws -> Bool {
-       let addNoteSuccess = try await cloudDataSource.callAddNoteBirdAsync(birdId: birdId, comment: comment, timestamp: 1)
+        let timeStamp = randomInt(from: 0, to: 100)
+        let addNoteSuccess = try await cloudDataSource.callAddNoteBirdAsync(
+            birdId: birdId,
+            comment: comment,
+            timestamp: timeStamp
+        )
         return addNoteSuccess
     }
     func getBirdId() -> String {
@@ -34,5 +39,11 @@ extension AddNoteBirdInteractor: AddNoteBirdPresenterInteractorProtocol {
     }
     func addNoteTitle() -> String {
         localDataSource.addNoteTitle()
+    }
+}
+
+extension AddNoteBirdInteractor {
+    func randomInt(from min: Int, to max: Int) -> Int {
+        return Int.random(in: min...max)
     }
 }
