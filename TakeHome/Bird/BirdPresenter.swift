@@ -23,21 +23,22 @@ final class BirdPresenter: BirdPresenterProtocol {
 // MARK: - BirdViewPresenterProtocol
 extension BirdPresenter: BirdViewPresenterProtocol {
     func fetchBirdData() {
-            view?.showLoading()
-            interactor.fetchBirdDataWithImages(onBatch: { [weak self] updatedBirds in
-                // Cada vez que se procesa un lote se actualiza la vista
-                DispatchQueue.main.async {
-                    self?.view?.updateBirdsDisplay(with: updatedBirds)
-                    self?.view?.hideLoading()
-                }
-            }, completion: { [weak self] finalBirds in
-                // Cuando se completó la descarga de todos los lotes, se actualiza la vista y se oculta el loading
-                DispatchQueue.main.async {
+        view?.showLoading()
+        interactor.fetchBirdDataWithImages(onBatch: { [weak self] updatedBirds in
+            DispatchQueue.main.async {
+                self?.view?.updateBirdsDisplay(with: updatedBirds)
+                self?.view?.hideLoading()
+            }
+        }, completion: { [weak self] finalBirds in
+            DispatchQueue.main.async {
+                if finalBirds.isEmpty {
+                    self?.view?.showError()
+                } else {
                     self?.view?.updateBirdsDisplay(with: finalBirds)
-                   
                 }
-            })
-        }
+            }
+        })
+    }
     
     func getBirdData() -> [BirdDisplayModel] {
         interactor.getBirdData()

@@ -10,14 +10,13 @@ import UIKit
 final class BirdViewController: UIViewController {
     var data = [BirdDisplayModel]()
 	var presenter: BirdViewPresenterProtocol?
-    private lazy var searchController: UISearchController = {
+    lazy var searchController: UISearchController = {
         let sc = UISearchController(searchResultsController: nil)
         sc.searchResultsUpdater = self
         sc.obscuresBackgroundDuringPresentation = false
         sc.searchBar.delegate = self
         sc.searchBar.placeholder = "Search"
         
-        // Personalización para que la searchBar sea transparente
         sc.searchBar.backgroundImage = UIImage()
         sc.searchBar.isTranslucent = true
         sc.searchBar.barTintColor = .clear
@@ -41,6 +40,32 @@ final class BirdViewController: UIViewController {
         indicator.hidesWhenStopped = true
         return indicator
     }()
+    lazy var loadingLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Loading images..."
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.textColor = .gray
+        label.textAlignment = .center
+        return label
+    }()
+    lazy var loadingContainerView: UIView = {
+        let container = UIView()
+        container.translatesAutoresizingMaskIntoConstraints = false
+        container.backgroundColor = .clear
+        
+        container.addSubview(activityIndicator)
+        container.addSubview(loadingLabel)
+        
+        NSLayoutConstraint.activate([
+            activityIndicator.topAnchor.constraint(equalTo: container.topAnchor),
+            activityIndicator.centerXAnchor.constraint(equalTo: container.centerXAnchor),
+            loadingLabel.topAnchor.constraint(equalTo: activityIndicator.bottomAnchor, constant: 10),
+            loadingLabel.centerXAnchor.constraint(equalTo: container.centerXAnchor),
+            loadingLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor)
+        ])
+        return container
+    }()
 }
 
 // MARK: View Life Cycle
@@ -50,15 +75,15 @@ extension BirdViewController {
         self.view.backgroundColor = .red
         setupSearchController()
         view.addSubview(collectionView)
-        view.addSubview(activityIndicator)
+        view.addSubview(loadingContainerView)
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            loadingContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loadingContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
         
         collectionView.dataSource = self
@@ -70,112 +95,42 @@ extension BirdViewController {
     }
     
 }
-// MARK: - UICollectionViewDataSource & Delegate
-extension BirdViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: BirdCollectionViewCell.reuseIdentifier,
-            for: indexPath
-        ) as? BirdCollectionViewCell else {
-            fatalError("No se pudo dequeuar BirdCollectionViewCell")
-        }
-        let bird = data[indexPath.item]
-        cell.configure(with: bird)
-        return cell
-    }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedBird = data[indexPath.item]
-        presenter?.didSelectBird(selectedBird)
-    }
-    
-}
-extension BirdViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellWidth = collectionView.bounds.width / 2
-        return CGSize(width: cellWidth, height: 196)
-    }
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .zero
-    }
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-}
 
 // MARK: BirdViewProtocol
 extension BirdViewController: BirdViewProtocol {
     func showError() {
-        print("showError")
+        DispatchQueue.main.async {
+            let errorView = GenericErrorView(frame: self.view.bounds)
+            errorView.updateErrorMessage("An error occurred while fetching data.\n Please try again.")
+            errorView.retryAction = { [weak self] in
+                errorView.removeFromSuperview()
+                self?.fetchBirdData()
+            }
+            self.view.addSubview(errorView)
+            errorView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                errorView.topAnchor.constraint(equalTo: self.view.topAnchor),
+                errorView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+                errorView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+                errorView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+            ])
+        }
     }
     func showLoading() {
         DispatchQueue.main.async {
             self.activityIndicator.startAnimating()
+            self.loadingContainerView.isHidden = false
         }
     }
     func hideLoading() {
         DispatchQueue.main.async {
             self.searchController.searchBar.isHidden = false
             self.activityIndicator.stopAnimating()
+            self.loadingContainerView.isHidden = true
             self.collectionView.reloadData()
         }
     }
     func updateBirdsDisplay(with birds: [BirdDisplayModel]) {
-           self.data = birds
-       }
-}
-
-extension BirdViewController: UISearchResultsUpdating, UISearchBarDelegate {
-    func setupSearchController() {
-        if let searchTextField = searchController.searchBar.value(forKey: "searchField") as? UITextField {
-            searchTextField.backgroundColor = UIColor(white: 1, alpha: 0.3)
-            searchTextField.alpha = 0.8
-            searchTextField.layer.cornerRadius = 10
-            searchTextField.clipsToBounds = true
-        }
-        
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
-        definesPresentationContext = true
-    }
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let searchText = searchController.searchBar.text else { return }
-        filterContentForSearchText(searchText)
-    }
-    
-    func filterContentForSearchText(_ searchText: String) {
-        if searchText.isEmpty {
-            data = presenter?.getBirdData() ?? []
-        } else {
-            data = presenter?.getBirdData().filter { bird in
-                let englishMatch = bird.englishName?.localizedCaseInsensitiveContains(searchText) ?? false
-                let latinMatch = bird.latinName?.localizedCaseInsensitiveContains(searchText) ?? false
-                return englishMatch || latinMatch
-            } ?? []
-        }
-        collectionView.reloadData()
+        self.data = birds
     }
 }
-
