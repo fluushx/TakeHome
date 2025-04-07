@@ -37,7 +37,7 @@ extension BirdViewController: UISearchResultsUpdating, UISearchBarDelegate {
                    return englishMatch
                }
            }
-           setupNoMatchesLabel()  // Actualizamos o removemos el label según el resultado.
+           setupNoMatchesLabel()  // update or remove the label according to the result.
            collectionView.reloadData()
        }
     private func setupNoMatchesLabel() {

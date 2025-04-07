@@ -27,6 +27,7 @@
 		346E4D202DA468E200C508CF /* BirdDetailInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346E4D1F2DA468E200C508CF /* BirdDetailInteractorTest.swift */; };
 		346E4D222DA468F900C508CF /* BirdResponse200.json in Resources */ = {isa = PBXBuildFile; fileRef = 346E4D212DA468F900C508CF /* BirdResponse200.json */; };
 		346E4D252DA46C2000C508CF /* BirdAddNoteInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346E4D242DA46C2000C508CF /* BirdAddNoteInteractorTest.swift */; };
+		346E4D272DA47DAB00C508CF /* BirdViewController + VoiceSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346E4D262DA47DAB00C508CF /* BirdViewController + VoiceSearch.swift */; };
 		34768D902DA4005900ED813D /* BirdViewController + CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34768D8F2DA4005900ED813D /* BirdViewController + CollectionView.swift */; };
 		34768D922DA400A100ED813D /* BirdViewController + SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34768D912DA400A100ED813D /* BirdViewController + SearchField.swift */; };
 		348225162D9ED27C00094E58 /* Note.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348225152D9ED27B00094E58 /* Note.graphql.swift */; };
@@ -107,6 +108,7 @@
 		346E4D1F2DA468E200C508CF /* BirdDetailInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdDetailInteractorTest.swift; sourceTree = "<group>"; };
 		346E4D212DA468F900C508CF /* BirdResponse200.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BirdResponse200.json; sourceTree = "<group>"; };
 		346E4D242DA46C2000C508CF /* BirdAddNoteInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdAddNoteInteractorTest.swift; sourceTree = "<group>"; };
+		346E4D262DA47DAB00C508CF /* BirdViewController + VoiceSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BirdViewController + VoiceSearch.swift"; sourceTree = "<group>"; };
 		34768D8F2DA4005900ED813D /* BirdViewController + CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BirdViewController + CollectionView.swift"; sourceTree = "<group>"; };
 		34768D912DA400A100ED813D /* BirdViewController + SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BirdViewController + SearchField.swift"; sourceTree = "<group>"; };
 		348225152D9ED27B00094E58 /* Note.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.graphql.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 			children = (
 				34768D8F2DA4005900ED813D /* BirdViewController + CollectionView.swift */,
 				34768D912DA400A100ED813D /* BirdViewController + SearchField.swift */,
+				346E4D262DA47DAB00C508CF /* BirdViewController + VoiceSearch.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -584,6 +587,7 @@
 				34768D922DA400A100ED813D /* BirdViewController + SearchField.swift in Sources */,
 				3482255E2D9F1CD800094E58 /* BirdDetailContract.swift in Sources */,
 				348225392D9EDB5400094E58 /* BirdPresenter.swift in Sources */,
+				346E4D272DA47DAB00C508CF /* BirdViewController + VoiceSearch.swift in Sources */,
 				2D09E6962CCAD8E100F19817 /* SchemaMetadata.graphql.swift in Sources */,
 				34D524DE2DA059CB00C8961F /* Utils.swift in Sources */,
 				2D09E6972CCAD8E100F19817 /* SchemaConfiguration.swift in Sources */,
@@ -781,8 +785,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TA446M72A2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TakeHome/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app uses the microphone to capture your voice for search.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This app uses speech recognition to enable voice search functionality.";
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -792,6 +801,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.copilot.TakeHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -804,8 +814,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TA446M72A2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TakeHome/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app uses the microphone to capture your voice for search.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This app uses speech recognition to enable voice search functionality.";
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -815,6 +830,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.copilot.TakeHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;

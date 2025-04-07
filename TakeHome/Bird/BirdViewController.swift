@@ -5,12 +5,20 @@
 //  Created by Felipe I Zapata R on 03-04-25.
 
 import UIKit
+import Speech
+import AVFoundation
 
 // MARK: - BirdViewController
 final class BirdViewController: UIViewController {
     var data = [BirdDisplayModel]()
     var allBirds = [BirdDisplayModel]()
     var presenter: BirdViewPresenterProtocol?
+    
+    // MARK: Speech Properties
+    let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
+    var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+    var recognitionTask: SFSpeechRecognitionTask?
+    let audioEngine = AVAudioEngine()
     
     lazy var searchController: UISearchController = {
         let sc = UISearchController(searchResultsController: nil)
@@ -24,6 +32,14 @@ final class BirdViewController: UIViewController {
         sc.searchBar.barTintColor = .clear
         sc.searchBar.backgroundColor = .clear
         sc.searchBar.isHidden = true
+        if let textField = sc.searchBar.value(forKey: "searchField") as? UITextField {
+            let micButton = UIButton(type: .custom)
+            micButton.setImage(UIImage(systemName: "mic.fill"), for: .normal)
+            micButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            micButton.addTarget(self, action: #selector(startVoiceSearch), for: .touchUpInside)
+            textField.rightView = micButton
+            textField.rightViewMode = .always
+        }
         return sc
     }()
     
@@ -68,6 +84,7 @@ extension BirdViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         setupSearchController()
+        configureMicButton()
         view.addSubview(collectionView)
         view.addSubview(loadingContainerView)
         NSLayoutConstraint.activate([
@@ -83,6 +100,15 @@ extension BirdViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.refreshControl = refreshControl
+        // Request authorization for voice recognition
+        SFSpeechRecognizer.requestAuthorization { authStatus in
+            switch authStatus {
+            case .authorized:
+                print("Speech recognition authorized")
+            default:
+                print("Speech recognition not authorized")
+            }
+        }
         fetchBirdData()
     }
     
@@ -92,6 +118,15 @@ extension BirdViewController {
     
     @objc func refreshData() {
         presenter?.fetchBirdData()
+    }
+    private func configureMicButton() {
+        let textField = searchController.searchBar.searchTextField
+        let micButton = UIButton(type: .custom)
+        micButton.setImage(UIImage(systemName: "mic.fill"), for: .normal)
+        micButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        micButton.addTarget(self, action: #selector(startVoiceSearch), for: .touchUpInside)
+        textField.rightView = micButton
+        textField.rightViewMode = .always
     }
 }
 
