@@ -28,6 +28,7 @@
 		346E4D222DA468F900C508CF /* BirdResponse200.json in Resources */ = {isa = PBXBuildFile; fileRef = 346E4D212DA468F900C508CF /* BirdResponse200.json */; };
 		346E4D252DA46C2000C508CF /* BirdAddNoteInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346E4D242DA46C2000C508CF /* BirdAddNoteInteractorTest.swift */; };
 		346E4D272DA47DAB00C508CF /* BirdViewController + VoiceSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346E4D262DA47DAB00C508CF /* BirdViewController + VoiceSearch.swift */; };
+		346E4D292DA484E800C508CF /* BirdConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346E4D282DA484E800C508CF /* BirdConstants.swift */; };
 		34768D902DA4005900ED813D /* BirdViewController + CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34768D8F2DA4005900ED813D /* BirdViewController + CollectionView.swift */; };
 		34768D922DA400A100ED813D /* BirdViewController + SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34768D912DA400A100ED813D /* BirdViewController + SearchField.swift */; };
 		348225162D9ED27C00094E58 /* Note.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348225152D9ED27B00094E58 /* Note.graphql.swift */; };
@@ -109,6 +110,7 @@
 		346E4D212DA468F900C508CF /* BirdResponse200.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BirdResponse200.json; sourceTree = "<group>"; };
 		346E4D242DA46C2000C508CF /* BirdAddNoteInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdAddNoteInteractorTest.swift; sourceTree = "<group>"; };
 		346E4D262DA47DAB00C508CF /* BirdViewController + VoiceSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BirdViewController + VoiceSearch.swift"; sourceTree = "<group>"; };
+		346E4D282DA484E800C508CF /* BirdConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdConstants.swift; sourceTree = "<group>"; };
 		34768D8F2DA4005900ED813D /* BirdViewController + CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BirdViewController + CollectionView.swift"; sourceTree = "<group>"; };
 		34768D912DA400A100ED813D /* BirdViewController + SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BirdViewController + SearchField.swift"; sourceTree = "<group>"; };
 		348225152D9ED27B00094E58 /* Note.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.graphql.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 				348225322D9EDB5400094E58 /* BirdViewController.swift */,
 				348225302D9EDB5400094E58 /* BirdPresenter.swift */,
 				348225362D9EDB5400094E58 /* BirdContract.swift */,
+				346E4D282DA484E800C508CF /* BirdConstants.swift */,
 			);
 			path = Bird;
 			sourceTree = "<group>";
@@ -602,6 +605,7 @@
 				3482255C2D9F1CD800094E58 /* BirdDetailViewController.swift in Sources */,
 				3482255A2D9F1CD800094E58 /* BirdDetailPresenter.swift in Sources */,
 				2D09E6992CCAD8E100F19817 /* BirdsQuery.graphql.swift in Sources */,
+				346E4D292DA484E800C508CF /* BirdConstants.swift in Sources */,
 				348225632D9F1D6A00094E58 /* BirdDetailCloudDataSource.swift in Sources */,
 				34D524D02DA00A0900C8961F /* AddNoteBirdFactory.swift in Sources */,
 				2D09E6A52CCADC3C00F19817 /* GraphQLClient.swift in Sources */,

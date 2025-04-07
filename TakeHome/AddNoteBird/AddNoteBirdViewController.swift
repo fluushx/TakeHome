@@ -66,7 +66,15 @@ extension AddNoteBirdViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        
+        setUpView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        textField.becomeFirstResponder()
+    }
+    
+    func setUpView() {
         view.addSubview(navBarView)
         navBarView.addSubview(backButton)
         navBarView.addSubview(navBarTitleLabel)
@@ -106,12 +114,6 @@ extension AddNoteBirdViewController {
         navBarTitleLabel.text = title
         textField.becomeFirstResponder()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        textField.becomeFirstResponder()
-    }
-    
     @objc func didTapBackAction() {
         presenter?.dismissModule()
     }

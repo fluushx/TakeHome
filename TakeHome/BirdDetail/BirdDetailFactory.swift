@@ -10,8 +10,8 @@ import Foundation
 public class BirdDetailFactory: BirdDetailFactoryProtocol {
     static func initialize(selectedBird: BirdDisplayModel) -> BirdDetailViewController {
         let client = createClient(
-            accessToken: "cXdP3HwiAio1trBSPdWA",
-            url: URL(string: "https://takehome.graphql.copilot.money")!
+            accessToken: BirdConstants.accessToken,
+            url: URL(string: BirdConstants.url)!
         )
         let interactor = BirdDetailInteractor(localDataSource: BirdDetailLocalDataSource(selectedBird: selectedBird),
                                               cloudDataSource: BirdDetailCloudDataSource(client: client))

@@ -85,6 +85,10 @@ extension BirdViewController {
         self.view.backgroundColor = .white
         setupSearchController()
         configureMicButton()
+        setUpView()
+        fetchBirdData()
+    }
+    func setUpView() {
         view.addSubview(collectionView)
         view.addSubview(loadingContainerView)
         NSLayoutConstraint.activate([
@@ -100,16 +104,6 @@ extension BirdViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.refreshControl = refreshControl
-        // Request authorization for voice recognition
-        SFSpeechRecognizer.requestAuthorization { authStatus in
-            switch authStatus {
-            case .authorized:
-                print("Speech recognition authorized")
-            default:
-                print("Speech recognition not authorized")
-            }
-        }
-        fetchBirdData()
     }
     
     func fetchBirdData() {
@@ -127,6 +121,15 @@ extension BirdViewController {
         micButton.addTarget(self, action: #selector(startVoiceSearch), for: .touchUpInside)
         textField.rightView = micButton
         textField.rightViewMode = .always
+        // Request authorization for voice recognition
+        SFSpeechRecognizer.requestAuthorization { authStatus in
+            switch authStatus {
+            case .authorized:
+                print("Speech recognition authorized")
+            default:
+                print("Speech recognition not authorized")
+            }
+        }
     }
 }
 

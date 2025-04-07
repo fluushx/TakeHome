@@ -14,8 +14,8 @@ final class AddNoteBirdCloudDataSource: AddNoteBirdCloudDataSourceProtocol {
 
     func callAddNoteBird(birdId: String, comment: String, timestamp: Int,completion: @escaping (Result<Bool, Error>) -> Void) {
         client = createClient(
-            accessToken: "cXdP3HwiAio1trBSPdWA",
-            url: URL(string: "https://takehome.graphql.copilot.money")!
+            accessToken: BirdConstants.accessToken,
+            url: URL(string: BirdConstants.url)!
         )
         
         client.perform(

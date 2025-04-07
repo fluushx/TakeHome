@@ -77,6 +77,10 @@ final class BirdDetailViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpView()
+        configureNoteAddedObserver()
+    }
+    func setUpView() {
         view.backgroundColor = .white
         view.addSubview(navBarView)
         navBarView.addSubview(navBarTitleLabel)
@@ -116,7 +120,6 @@ final class BirdDetailViewController: UIViewController {
             
         ])
         setUpHeaderView()
-        configureNoteAddedObserver()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
