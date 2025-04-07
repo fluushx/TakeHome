@@ -29,16 +29,32 @@ extension BirdViewController: UISearchResultsUpdating, UISearchBarDelegate {
     }
     
     func filterContentForSearchText(_ searchText: String) {
-        if searchText.isEmpty {
-            data = presenter?.getBirdData() ?? []
+           if searchText.isEmpty {
+               data = allBirds
+           } else {
+               data = allBirds.filter { bird in
+                   let englishMatch = bird.englishName?.localizedCaseInsensitiveContains(searchText) ?? false
+                   return englishMatch
+               }
+           }
+           setupNoMatchesLabel()  // Actualizamos o removemos el label según el resultado.
+           collectionView.reloadData()
+       }
+    private func setupNoMatchesLabel() {
+        if data.isEmpty {
+            let label = UILabel()
+            label.text = "No matches found"
+            label.textAlignment = .center
+            label.textColor = .gray
+            label.font = UIFont.systemFont(ofSize: 16)
+            label.numberOfLines = 0
+            
+            label.frame = collectionView.bounds
+            label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            collectionView.backgroundView = label
         } else {
-            data = presenter?.getBirdData().filter { bird in
-                let englishMatch = bird.englishName?.localizedCaseInsensitiveContains(searchText) ?? false
-                let latinMatch = bird.latinName?.localizedCaseInsensitiveContains(searchText) ?? false
-                return englishMatch || latinMatch
-            } ?? []
+            collectionView.backgroundView = nil
         }
-        collectionView.reloadData()
     }
 }
 

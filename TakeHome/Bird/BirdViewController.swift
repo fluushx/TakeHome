@@ -9,6 +9,7 @@ import UIKit
 // MARK: - BirdViewController
 final class BirdViewController: UIViewController {
     var data = [BirdDisplayModel]()
+    var allBirds = [BirdDisplayModel]()
     var presenter: BirdViewPresenterProtocol?
     
     lazy var searchController: UISearchController = {
@@ -48,6 +49,16 @@ final class BirdViewController: UIViewController {
         let rc = UIRefreshControl()
         rc.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         return rc
+    }()
+    lazy var noMatchesLabel: UILabel = {
+        let label = UILabel()
+        label.text = "No matches found"
+        label.textAlignment = .center
+        label.textColor = .gray
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.isHidden = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
 }
 
@@ -129,6 +140,13 @@ extension BirdViewController: BirdViewProtocol {
     }
     
     func updateBirdsDisplay(with birds: [BirdDisplayModel]) {
-        self.data = birds
+        self.allBirds = birds
+        if let searchText = searchController.searchBar.text, !searchText.isEmpty {
+            self.data = allBirds.filter { bird in
+                return bird.englishName?.localizedCaseInsensitiveContains(searchText) ?? false
+            }
+        } else {
+            self.data = allBirds
+        }
     }
 }

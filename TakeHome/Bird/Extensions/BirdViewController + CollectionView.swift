@@ -26,6 +26,7 @@ extension BirdViewController: UICollectionViewDataSource, UICollectionViewDelega
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        searchController.isActive = false
         let selectedBird = data[indexPath.item]
         presenter?.didSelectBird(selectedBird)
     }
