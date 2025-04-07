@@ -9,14 +9,13 @@ import UIKit
 
 // MARK: - BirdCloudDataSource
 final class BirdCloudDataSource: BirdCloudDataSourceProtocol {
-    var client: ApolloClient!
-
+    var client: ApolloClient
+    
+    init(client: ApolloClient) {
+        self.client = client
+    }
+    
     func fetchBirdData(completion: @escaping (Result<[BirdDisplayModel], Error>) -> Void) {
-        client = createClient(
-            accessToken: "cXdP3HwiAio1trBSPdWA",
-            url: URL(string: "https://takehome.graphql.copilot.money")!
-        )
-        
         client.fetch(query: GraphQL.BirdsQuery()) { result in
             switch result {
             case .success(let graphQLResult):

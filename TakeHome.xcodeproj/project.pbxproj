@@ -24,6 +24,9 @@
 		2DB8FA1A28AD40F900DF01CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB8FA1928AD40F900DF01CC /* SceneDelegate.swift */; };
 		2DB8FA2128AD40FA00DF01CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DB8FA2028AD40FA00DF01CC /* Assets.xcassets */; };
 		2DB8FA2428AD40FA00DF01CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DB8FA2228AD40FA00DF01CC /* LaunchScreen.storyboard */; };
+		346E4D202DA468E200C508CF /* BirdDetailInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346E4D1F2DA468E200C508CF /* BirdDetailInteractorTest.swift */; };
+		346E4D222DA468F900C508CF /* BirdResponse200.json in Resources */ = {isa = PBXBuildFile; fileRef = 346E4D212DA468F900C508CF /* BirdResponse200.json */; };
+		346E4D252DA46C2000C508CF /* BirdAddNoteInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346E4D242DA46C2000C508CF /* BirdAddNoteInteractorTest.swift */; };
 		34768D902DA4005900ED813D /* BirdViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34768D8F2DA4005900ED813D /* BirdViewController+TableView.swift */; };
 		34768D922DA400A100ED813D /* BirdViewController + SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34768D912DA400A100ED813D /* BirdViewController + SearchField.swift */; };
 		348225162D9ED27C00094E58 /* Note.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348225152D9ED27B00094E58 /* Note.graphql.swift */; };
@@ -64,10 +67,23 @@
 		34D586702DA427AE003AAB59 /* BirdQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D5866F2DA427AE003AAB59 /* BirdQuery.graphql.swift */; };
 		34D586722DA42F8C003AAB59 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D586712DA42F8C003AAB59 /* Notification.swift */; };
 		34D586742DA435B9003AAB59 /* ErrorBirdDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D586732DA435B9003AAB59 /* ErrorBirdDetailViewCell.swift */; };
+		34D5867C2DA44E21003AAB59 /* TakeHomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D5867B2DA44E21003AAB59 /* TakeHomeTests.swift */; };
+		34D586832DA44F40003AAB59 /* BirdsResponse200.json in Resources */ = {isa = PBXBuildFile; fileRef = 34D586822DA44F40003AAB59 /* BirdsResponse200.json */; };
+		34D586862DA45028003AAB59 /* BirdInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D586852DA45028003AAB59 /* BirdInteractorTest.swift */; };
 		34EF6A252DA2EDD3001807AB /* BirdDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EF6A242DA2EDD3001807AB /* BirdDisplayModel.swift */; };
 		34EF6A2A2DA307DE001807AB /* BirDetailDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EF6A292DA307DE001807AB /* BirDetailDisplayModel.swift */; };
 		34EF6A2C2DA313A3001807AB /* AddNoteBirdDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EF6A2B2DA313A3001807AB /* AddNoteBirdDisplayModel.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		34D5867D2DA44E21003AAB59 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2DB8FA0C28AD40F900DF01CC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2DB8FA1328AD40F900DF01CC;
+			remoteInfo = TakeHome;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2D09E6882CCAD87200F19817 /* birds.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = birds.graphql; sourceTree = "<group>"; };
@@ -88,6 +104,9 @@
 		2DB8FA2028AD40FA00DF01CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2DB8FA2328AD40FA00DF01CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DB8FA2528AD40FA00DF01CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		346E4D1F2DA468E200C508CF /* BirdDetailInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdDetailInteractorTest.swift; sourceTree = "<group>"; };
+		346E4D212DA468F900C508CF /* BirdResponse200.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BirdResponse200.json; sourceTree = "<group>"; };
+		346E4D242DA46C2000C508CF /* BirdAddNoteInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdAddNoteInteractorTest.swift; sourceTree = "<group>"; };
 		34768D8F2DA4005900ED813D /* BirdViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BirdViewController+TableView.swift"; sourceTree = "<group>"; };
 		34768D912DA400A100ED813D /* BirdViewController + SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BirdViewController + SearchField.swift"; sourceTree = "<group>"; };
 		348225152D9ED27B00094E58 /* Note.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.graphql.swift; sourceTree = "<group>"; };
@@ -121,13 +140,17 @@
 		34D524DA2DA0585900C8961F /* AddNoteBirdModelResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteBirdModelResponse.swift; sourceTree = "<group>"; };
 		34D524DD2DA059CB00C8961F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		34D586632DA40CD7003AAB59 /* GenericLoadingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericLoadingIndicatorView.swift; sourceTree = "<group>"; };
-		34D586672DA423D5003AAB59 /* bird.graphql */ = {isa = PBXFileReference; lastKnownFileType = file; name = bird.graphql; path = TakeHome/API/bird.graphql; sourceTree = SOURCE_ROOT; };
-		34D586692DA423DE003AAB59 /* bird.graphql */ = {isa = PBXFileReference; lastKnownFileType = file; name = bird.graphql; path = TakeHome/API/bird.graphql; sourceTree = SOURCE_ROOT; };
+		34D586672DA423D5003AAB59 /* bird.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; name = bird.graphql; path = TakeHome/API/bird.graphql; sourceTree = SOURCE_ROOT; };
+		34D586692DA423DE003AAB59 /* bird.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; name = bird.graphql; path = TakeHome/API/bird.graphql; sourceTree = SOURCE_ROOT; };
 		34D5866B2DA423E9003AAB59 /* bird.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bird.graphql; sourceTree = "<group>"; };
 		34D5866D2DA42464003AAB59 /* schema.graphqls */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = schema.graphqls; sourceTree = "<group>"; };
 		34D5866F2DA427AE003AAB59 /* BirdQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BirdQuery.graphql.swift; sourceTree = "<group>"; };
 		34D586712DA42F8C003AAB59 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		34D586732DA435B9003AAB59 /* ErrorBirdDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorBirdDetailViewCell.swift; sourceTree = "<group>"; };
+		34D586792DA44E21003AAB59 /* TakeHomeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TakeHomeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		34D5867B2DA44E21003AAB59 /* TakeHomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeHomeTests.swift; sourceTree = "<group>"; };
+		34D586822DA44F40003AAB59 /* BirdsResponse200.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BirdsResponse200.json; sourceTree = "<group>"; };
+		34D586852DA45028003AAB59 /* BirdInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdInteractorTest.swift; sourceTree = "<group>"; };
 		34EF6A242DA2EDD3001807AB /* BirdDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdDisplayModel.swift; sourceTree = "<group>"; };
 		34EF6A292DA307DE001807AB /* BirDetailDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirDetailDisplayModel.swift; sourceTree = "<group>"; };
 		34EF6A2B2DA313A3001807AB /* AddNoteBirdDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteBirdDisplayModel.swift; sourceTree = "<group>"; };
@@ -139,6 +162,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D09E6842CCAD67500F19817 /* Apollo in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34D586762DA44E21003AAB59 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				2DB8FA1628AD40F900DF01CC /* TakeHome */,
+				34D5867A2DA44E21003AAB59 /* TakeHomeTests */,
 				2DB8FA1528AD40F900DF01CC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -231,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				2DB8FA1428AD40F900DF01CC /* TakeHome.app */,
+				34D586792DA44E21003AAB59 /* TakeHomeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -250,6 +282,23 @@
 				2DB8FA2528AD40FA00DF01CC /* Info.plist */,
 			);
 			path = TakeHome;
+			sourceTree = "<group>";
+		};
+		346E4D1E2DA468C400C508CF /* BirdDetailInteractorTest */ = {
+			isa = PBXGroup;
+			children = (
+				346E4D212DA468F900C508CF /* BirdResponse200.json */,
+				346E4D1F2DA468E200C508CF /* BirdDetailInteractorTest.swift */,
+			);
+			path = BirdDetailInteractorTest;
+			sourceTree = "<group>";
+		};
+		346E4D232DA46C0200C508CF /* BirdAddNoteInteractorTest */ = {
+			isa = PBXGroup;
+			children = (
+				346E4D242DA46C2000C508CF /* BirdAddNoteInteractorTest.swift */,
+			);
+			path = BirdAddNoteInteractorTest;
 			sourceTree = "<group>";
 		};
 		34768D8E2DA4004C00ED813D /* Extensions */ = {
@@ -388,6 +437,26 @@
 			path = Utis;
 			sourceTree = "<group>";
 		};
+		34D5867A2DA44E21003AAB59 /* TakeHomeTests */ = {
+			isa = PBXGroup;
+			children = (
+				346E4D232DA46C0200C508CF /* BirdAddNoteInteractorTest */,
+				346E4D1E2DA468C400C508CF /* BirdDetailInteractorTest */,
+				34D586842DA44F43003AAB59 /* BirdInteractorTest */,
+				34D5867B2DA44E21003AAB59 /* TakeHomeTests.swift */,
+			);
+			path = TakeHomeTests;
+			sourceTree = "<group>";
+		};
+		34D586842DA44F43003AAB59 /* BirdInteractorTest */ = {
+			isa = PBXGroup;
+			children = (
+				34D586822DA44F40003AAB59 /* BirdsResponse200.json */,
+				34D586852DA45028003AAB59 /* BirdInteractorTest.swift */,
+			);
+			path = BirdInteractorTest;
+			sourceTree = "<group>";
+		};
 		34EF6A282DA307CF001807AB /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -416,6 +485,24 @@
 			productReference = 2DB8FA1428AD40F900DF01CC /* TakeHome.app */;
 			productType = "com.apple.product-type.application";
 		};
+		34D586782DA44E21003AAB59 /* TakeHomeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 34D5867F2DA44E21003AAB59 /* Build configuration list for PBXNativeTarget "TakeHomeTests" */;
+			buildPhases = (
+				34D586752DA44E21003AAB59 /* Sources */,
+				34D586762DA44E21003AAB59 /* Frameworks */,
+				34D586772DA44E21003AAB59 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				34D5867E2DA44E21003AAB59 /* PBXTargetDependency */,
+			);
+			name = TakeHomeTests;
+			productName = TakeHomeTests;
+			productReference = 34D586792DA44E21003AAB59 /* TakeHomeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -423,11 +510,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1340;
+				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
 					2DB8FA1328AD40F900DF01CC = {
 						CreatedOnToolsVersion = 13.4.1;
+					};
+					34D586782DA44E21003AAB59 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 2DB8FA1328AD40F900DF01CC;
 					};
 				};
 			};
@@ -448,6 +539,7 @@
 			projectRoot = "";
 			targets = (
 				2DB8FA1328AD40F900DF01CC /* TakeHome */,
+				34D586782DA44E21003AAB59 /* TakeHomeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -464,6 +556,15 @@
 				34D5866C2DA423E9003AAB59 /* bird.graphql in Resources */,
 				2D09E69E2CCAD95B00F19817 /* notes.graphql in Resources */,
 				34D5866E2DA42464003AAB59 /* schema.graphqls in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34D586772DA44E21003AAB59 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				346E4D222DA468F900C508CF /* BirdResponse200.json in Resources */,
+				34D586832DA44F40003AAB59 /* BirdsResponse200.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,7 +630,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		34D586752DA44E21003AAB59 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34D5867C2DA44E21003AAB59 /* TakeHomeTests.swift in Sources */,
+				346E4D252DA46C2000C508CF /* BirdAddNoteInteractorTest.swift in Sources */,
+				34D586862DA45028003AAB59 /* BirdInteractorTest.swift in Sources */,
+				346E4D202DA468E200C508CF /* BirdDetailInteractorTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		34D5867E2DA44E21003AAB59 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2DB8FA1328AD40F900DF01CC /* TakeHome */;
+			targetProxy = 34D5867D2DA44E21003AAB59 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2DB8FA2228AD40FA00DF01CC /* LaunchScreen.storyboard */ = {
@@ -703,6 +823,59 @@
 			};
 			name = Release;
 		};
+		34D586802DA44E21003AAB59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TA446M72A2;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = fz.TakeHomeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TakeHome.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TakeHome";
+			};
+			name = Debug;
+		};
+		34D586812DA44E21003AAB59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TA446M72A2;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = fz.TakeHomeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TakeHome.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TakeHome";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -720,6 +893,15 @@
 			buildConfigurations = (
 				2DB8FA2928AD40FA00DF01CC /* Debug */,
 				2DB8FA2A28AD40FA00DF01CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		34D5867F2DA44E21003AAB59 /* Build configuration list for PBXNativeTarget "TakeHomeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34D586802DA44E21003AAB59 /* Debug */,
+				34D586812DA44E21003AAB59 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

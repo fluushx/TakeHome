@@ -9,14 +9,15 @@ import UIKit
 // MARK: - BirdViewController
 final class BirdViewController: UIViewController {
     var data = [BirdDisplayModel]()
-	var presenter: BirdViewPresenterProtocol?
+    var presenter: BirdViewPresenterProtocol?
+    
     lazy var searchController: UISearchController = {
         let sc = UISearchController(searchResultsController: nil)
+        // searchResultsUpdater is declared as weak, so self is not strongly captured.
         sc.searchResultsUpdater = self
         sc.obscuresBackgroundDuringPresentation = false
         sc.searchBar.delegate = self
         sc.searchBar.placeholder = "Search"
-        
         sc.searchBar.backgroundImage = UIImage()
         sc.searchBar.isTranslucent = true
         sc.searchBar.barTintColor = .clear
@@ -24,6 +25,7 @@ final class BirdViewController: UIViewController {
         sc.searchBar.isHidden = true
         return sc
     }()
+    
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -34,22 +36,22 @@ final class BirdViewController: UIViewController {
         cv.register(BirdCollectionViewCell.self, forCellWithReuseIdentifier: BirdCollectionViewCell.reuseIdentifier)
         return cv
     }()
- 
+    
     lazy var loadingContainerView: GenericLoadingIndicatorView = {
         let view = GenericLoadingIndicatorView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.isHidden = true
         return view
     }()
+    
     lazy var refreshControl: UIRefreshControl = {
         let rc = UIRefreshControl()
         rc.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         return rc
     }()
-
 }
 
-// MARK: View Life Cycle
+// MARK: - View Life Cycle
 extension BirdViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -72,20 +74,21 @@ extension BirdViewController {
         collectionView.refreshControl = refreshControl
         fetchBirdData()
     }
+    
     func fetchBirdData() {
         presenter?.fetchBirdData()
     }
+    
     @objc func refreshData() {
         presenter?.fetchBirdData()
-        
     }
-    
 }
 
-// MARK: BirdViewProtocol
+// MARK: - BirdViewProtocol
 extension BirdViewController: BirdViewProtocol {
     func showError() {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
             self.collectionView.isHidden = true
             self.searchController.searchBar.isHidden = true
             self.loadingContainerView.showRetry()
@@ -99,8 +102,10 @@ extension BirdViewController: BirdViewProtocol {
             }
         }
     }
+    
     func showLoading() {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
             if self.collectionView.refreshControl?.isRefreshing == false {
                 self.loadingContainerView.startLoading()
                 self.loadingContainerView.isHidden = false
@@ -108,8 +113,10 @@ extension BirdViewController: BirdViewProtocol {
             }
         }
     }
+    
     func hideLoading() {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
             self.searchController.searchBar.isHidden = false
             self.loadingContainerView.stopLoading()
             self.loadingContainerView.isHidden = true
@@ -120,6 +127,7 @@ extension BirdViewController: BirdViewProtocol {
             self.collectionView.reloadData()
         }
     }
+    
     func updateBirdsDisplay(with birds: [BirdDisplayModel]) {
         self.data = birds
     }

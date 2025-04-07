@@ -40,7 +40,8 @@ final class ErrorBirdDetailViewCell: UITableViewCell {
         
         // Assign the internal retry action of the generic view to call our local method.
         loadingIndicatorView.retryAction = { [weak self] in
-            self?.handleRetry()
+            guard let self = self else { return }
+            self.handleRetry()
         }
     }
     

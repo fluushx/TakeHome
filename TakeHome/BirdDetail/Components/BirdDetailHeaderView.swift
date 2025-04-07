@@ -14,7 +14,7 @@ protocol BirdDetailHeaderProtocol {
 }
 
 // MARK: - BirdDetailHeaderView
-final class BirdDetailHeaderView: UIView, BirdDetailHeaderProtocol{
+final class BirdDetailHeaderView: UIView, BirdDetailHeaderProtocol {
     
     let imageView: UIImageView = {
         let iv = UIImageView()

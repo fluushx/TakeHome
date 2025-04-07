@@ -28,6 +28,7 @@ final class BirdDetailViewController: UIViewController {
         tv.register(BirdDetailViewCell.self, forCellReuseIdentifier: BirdDetailViewCell.reuseIdentifier)
         tv.register(ErrorBirdDetailViewCell.self, forCellReuseIdentifier: ErrorBirdDetailViewCell.reuseIdentifier)
         tv.separatorStyle = .none
+        tv.alwaysBounceVertical = true
         return tv
     }()
     
@@ -265,7 +266,8 @@ extension BirdDetailViewController {
     }
     
     func hideBelowHeaderIndicator(after delay: TimeInterval = 2.0) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
+            guard let self = self else { return }
             self.belowHeaderIndicator.stopLoading()
             self.belowHeaderIndicator.removeFromSuperview()
             self.tableView.isHidden = false
