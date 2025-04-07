@@ -29,6 +29,7 @@ class BirdDetailViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        selectionStyle = .none
         setupViews()
     }
     
@@ -53,7 +54,7 @@ class BirdDetailViewCell: UITableViewCell {
         ])
     }
     
-    func setUpLabel(comment: String) {
+    func setUpLabel(comment: String?) {
         commentLabel.text = comment
     }
 }

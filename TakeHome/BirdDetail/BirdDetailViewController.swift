@@ -122,7 +122,14 @@ final class BirdDetailViewController: UIViewController {
 extension BirdDetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter?.getNotes().count ?? 0
+        let count = presenter?.getNotes().count ?? 0
+        if count == 0 {
+            setEmptyBackgroundView(for: tableView)
+            return 0
+        } else {
+            tableView.backgroundView = nil
+            return count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -141,6 +148,20 @@ extension BirdDetailViewController: UITableViewDataSource, UITableViewDelegate {
          headerView.updateImageSize(scrollOffset: offset)
          headerHeightConstraint.constant = headerView.currentHeight()
     }
+    func setEmptyBackgroundView(for tableView: UITableView) {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "no comments about the bird"
+        label.textAlignment = .center
+        label.textColor = .gray
+        
+        tableView.backgroundView = label
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
+            label.topAnchor.constraint(equalTo: tableView.topAnchor, constant: 48)
+        ])
+    }
+
 }
 
 
