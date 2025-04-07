@@ -34,45 +34,26 @@ final class BirdViewController: UIViewController {
         cv.register(BirdCollectionViewCell.self, forCellWithReuseIdentifier: BirdCollectionViewCell.reuseIdentifier)
         return cv
     }()
-    lazy var activityIndicator: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView(style: .large)
-        indicator.translatesAutoresizingMaskIntoConstraints = false
-        indicator.hidesWhenStopped = true
-        return indicator
+ 
+    lazy var loadingContainerView: GenericLoadingIndicatorView = {
+        let view = GenericLoadingIndicatorView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isHidden = true
+        return view
     }()
-    lazy var loadingLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Loading images..."
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = .gray
-        label.textAlignment = .center
-        return label
+    lazy var refreshControl: UIRefreshControl = {
+        let rc = UIRefreshControl()
+        rc.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        return rc
     }()
-    lazy var loadingContainerView: UIView = {
-        let container = UIView()
-        container.translatesAutoresizingMaskIntoConstraints = false
-        container.backgroundColor = .clear
-        
-        container.addSubview(activityIndicator)
-        container.addSubview(loadingLabel)
-        
-        NSLayoutConstraint.activate([
-            activityIndicator.topAnchor.constraint(equalTo: container.topAnchor),
-            activityIndicator.centerXAnchor.constraint(equalTo: container.centerXAnchor),
-            loadingLabel.topAnchor.constraint(equalTo: activityIndicator.bottomAnchor, constant: 10),
-            loadingLabel.centerXAnchor.constraint(equalTo: container.centerXAnchor),
-            loadingLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor)
-        ])
-        return container
-    }()
+
 }
 
 // MARK: View Life Cycle
 extension BirdViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .red
+        self.view.backgroundColor = .white
         setupSearchController()
         view.addSubview(collectionView)
         view.addSubview(loadingContainerView)
@@ -88,10 +69,15 @@ extension BirdViewController {
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.refreshControl = refreshControl
         fetchBirdData()
     }
     func fetchBirdData() {
         presenter?.fetchBirdData()
+    }
+    @objc func refreshData() {
+        presenter?.fetchBirdData()
+        
     }
     
 }
@@ -100,33 +86,37 @@ extension BirdViewController {
 extension BirdViewController: BirdViewProtocol {
     func showError() {
         DispatchQueue.main.async {
-            let errorView = GenericErrorView(frame: self.view.bounds)
-            errorView.updateErrorMessage("An error occurred while fetching data.\n Please try again.")
-            errorView.retryAction = { [weak self] in
-                errorView.removeFromSuperview()
-                self?.fetchBirdData()
+            self.collectionView.isHidden = true
+            self.searchController.searchBar.isHidden = true
+            self.loadingContainerView.showRetry()
+            self.loadingContainerView.updateMessage("Failed to complete action.\n Would you like to retry?")
+            self.loadingContainerView.retryAction = { [weak self] in
+                guard let self = self else { return }
+                self.loadingContainerView.retryButton.isEnabled = true
+                self.loadingContainerView.startLoading()
+                self.loadingContainerView.updateMessage("Loading images...")
+                self.fetchBirdData()
             }
-            self.view.addSubview(errorView)
-            errorView.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                errorView.topAnchor.constraint(equalTo: self.view.topAnchor),
-                errorView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-                errorView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-                errorView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
-            ])
         }
     }
     func showLoading() {
         DispatchQueue.main.async {
-            self.activityIndicator.startAnimating()
-            self.loadingContainerView.isHidden = false
+            if self.collectionView.refreshControl?.isRefreshing == false {
+                self.loadingContainerView.startLoading()
+                self.loadingContainerView.isHidden = false
+                self.loadingContainerView.updateMessage("Loading images...")
+            }
         }
     }
     func hideLoading() {
         DispatchQueue.main.async {
             self.searchController.searchBar.isHidden = false
-            self.activityIndicator.stopAnimating()
+            self.loadingContainerView.stopLoading()
             self.loadingContainerView.isHidden = true
+            self.collectionView.isHidden = false
+            if self.collectionView.refreshControl?.isRefreshing == true {
+                self.collectionView.refreshControl?.endRefreshing()
+            }
             self.collectionView.reloadData()
         }
     }

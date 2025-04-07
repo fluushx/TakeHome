@@ -53,6 +53,12 @@ final class AddNoteBirdViewController: UIViewController {
         tf.backgroundColor = .systemGray6
         return tf
     }()
+    lazy var sendingCommentView: GenericLoadingIndicatorView = {
+        let view = GenericLoadingIndicatorView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isHidden = true
+        return view
+    }()
 }
 
 // MARK: - View Life Cycle
@@ -66,6 +72,7 @@ extension AddNoteBirdViewController {
         navBarView.addSubview(navBarTitleLabel)
         view.addSubview(imageView)
         view.addSubview(textField)
+        view.addSubview(sendingCommentView)
         
         textField.delegate = self
         textField.inputAccessoryView = createAccessoryToolbar()
@@ -89,7 +96,10 @@ extension AddNoteBirdViewController {
             textField.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 40),
             textField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             textField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-            textField.heightAnchor.constraint(equalToConstant: 150)
+            textField.heightAnchor.constraint(equalToConstant: 150),
+            
+            sendingCommentView.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 50),
+            sendingCommentView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         let title = presenter?.addNoteTitle()
         imageView.image = presenter?.getBirdImage()
@@ -124,13 +134,45 @@ extension AddNoteBirdViewController {
     }
     
     @objc func didTapSaveButton() {
+        textField.isEnabled = false
         callAddNote(textField.text ?? "")
-        textField.resignFirstResponder()
     }
 }
 
 // MARK: - AddNoteBirdViewProtocol
 extension AddNoteBirdViewController: AddNoteBirdViewProtocol {
+    func showLoading() {
+        DispatchQueue.main.async {
+            self.sendingCommentView.startLoading()
+            self.sendingCommentView.updateMessage("Sending comment...")
+        }
+    }
+    
+    func hideLoading() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.sendingCommentView.showSuccess()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.sendingCommentView.stopLoading()
+                self.textField.isEnabled = true
+                self.textField.text = ""
+            }
+        }
+    }
+    
+    func showError() {
+        DispatchQueue.main.async {
+            self.sendingCommentView.showRetry()
+            self.sendingCommentView.updateMessage("Failed to complete action.\n Would you like to retry?")
+            self.sendingCommentView.retryAction = { [weak self] in
+                guard let self = self else { return }
+                self.sendingCommentView.retryButton.isEnabled = true
+                self.sendingCommentView.startLoading()
+                self.sendingCommentView.updateMessage("Sending comment...")
+                self.textField.isEnabled = false
+                self.callAddNote(self.textField.text ?? "")
+            }
+        }
+    }
 }
 
 // MARK: - UITextFieldDelegate

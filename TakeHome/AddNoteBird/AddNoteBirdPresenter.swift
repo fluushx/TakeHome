@@ -33,14 +33,16 @@ extension AddNoteBirdPresenter: AddNoteBirdViewPresenterProtocol {
     }
     
     func callAddNote(comment: String) async {
+        view?.showLoading()
         do {
             let birdId = interactor.getBirdId()
             _ = try await interactor.callAddNoteBirdAsync(
                 birdId: birdId,
                 comment: comment
             )
+            view?.hideLoading()
         } catch {
-            print("error adding note")
+            view?.showError()
         }
     }
 }

@@ -20,6 +20,9 @@ protocol AddNoteBirdRouterProtocol: AnyObject {
 // MARK: - View
 protocol AddNoteBirdViewProtocol: AnyObject {
     var presenter: AddNoteBirdViewPresenterProtocol? { get set }
+    func showLoading()
+    func hideLoading()
+    func showError()
 }
 
 // MARK: - View -> Presenter
