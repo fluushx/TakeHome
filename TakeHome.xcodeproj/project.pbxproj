@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2D09E6842CCAD67500F19817 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 2D09E6832CCAD67500F19817 /* Apollo */; };
-		2D09E6872CCAD69C00F19817 /* schema.graphqls in Resources */ = {isa = PBXBuildFile; fileRef = 2D09E6862CCAD69800F19817 /* schema.graphqls */; };
 		2D09E6892CCAD87700F19817 /* birds.graphql in Sources */ = {isa = PBXBuildFile; fileRef = 2D09E6882CCAD87200F19817 /* birds.graphql */; };
 		2D09E6962CCAD8E100F19817 /* SchemaMetadata.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D09E6942CCAD8E100F19817 /* SchemaMetadata.graphql.swift */; };
 		2D09E6972CCAD8E100F19817 /* SchemaConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D09E6932CCAD8E100F19817 /* SchemaConfiguration.swift */; };
@@ -58,13 +57,19 @@
 		34D524DB2DA0585900C8961F /* AddNoteBirdModelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D524DA2DA0585900C8961F /* AddNoteBirdModelResponse.swift */; };
 		34D524DE2DA059CB00C8961F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D524DD2DA059CB00C8961F /* Utils.swift */; };
 		34D586642DA40CD7003AAB59 /* GenericLoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D586632DA40CD7003AAB59 /* GenericLoadingIndicatorView.swift */; };
+		34D586682DA423D5003AAB59 /* bird.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 34D586672DA423D5003AAB59 /* bird.graphql */; };
+		34D5866A2DA423DE003AAB59 /* bird.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 34D586692DA423DE003AAB59 /* bird.graphql */; };
+		34D5866C2DA423E9003AAB59 /* bird.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 34D5866B2DA423E9003AAB59 /* bird.graphql */; };
+		34D5866E2DA42464003AAB59 /* schema.graphqls in Resources */ = {isa = PBXBuildFile; fileRef = 34D5866D2DA42464003AAB59 /* schema.graphqls */; };
+		34D586702DA427AE003AAB59 /* BirdQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D5866F2DA427AE003AAB59 /* BirdQuery.graphql.swift */; };
+		34D586722DA42F8C003AAB59 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D586712DA42F8C003AAB59 /* Notification.swift */; };
+		34D586742DA435B9003AAB59 /* ErrorBirdDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D586732DA435B9003AAB59 /* ErrorBirdDetailViewCell.swift */; };
 		34EF6A252DA2EDD3001807AB /* BirdDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EF6A242DA2EDD3001807AB /* BirdDisplayModel.swift */; };
 		34EF6A2A2DA307DE001807AB /* BirDetailDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EF6A292DA307DE001807AB /* BirDetailDisplayModel.swift */; };
 		34EF6A2C2DA313A3001807AB /* AddNoteBirdDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EF6A2B2DA313A3001807AB /* AddNoteBirdDisplayModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2D09E6862CCAD69800F19817 /* schema.graphqls */ = {isa = PBXFileReference; lastKnownFileType = text; path = schema.graphqls; sourceTree = "<group>"; };
 		2D09E6882CCAD87200F19817 /* birds.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = birds.graphql; sourceTree = "<group>"; };
 		2D09E68A2CCAD8E100F19817 /* GraphQL.graphql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQL.graphql.swift; sourceTree = "<group>"; };
 		2D09E68B2CCAD8E100F19817 /* BirdsQuery.graphql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdsQuery.graphql.swift; sourceTree = "<group>"; };
@@ -116,6 +121,13 @@
 		34D524DA2DA0585900C8961F /* AddNoteBirdModelResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteBirdModelResponse.swift; sourceTree = "<group>"; };
 		34D524DD2DA059CB00C8961F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		34D586632DA40CD7003AAB59 /* GenericLoadingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericLoadingIndicatorView.swift; sourceTree = "<group>"; };
+		34D586672DA423D5003AAB59 /* bird.graphql */ = {isa = PBXFileReference; lastKnownFileType = file; name = bird.graphql; path = TakeHome/API/bird.graphql; sourceTree = SOURCE_ROOT; };
+		34D586692DA423DE003AAB59 /* bird.graphql */ = {isa = PBXFileReference; lastKnownFileType = file; name = bird.graphql; path = TakeHome/API/bird.graphql; sourceTree = SOURCE_ROOT; };
+		34D5866B2DA423E9003AAB59 /* bird.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bird.graphql; sourceTree = "<group>"; };
+		34D5866D2DA42464003AAB59 /* schema.graphqls */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = schema.graphqls; sourceTree = "<group>"; };
+		34D5866F2DA427AE003AAB59 /* BirdQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BirdQuery.graphql.swift; sourceTree = "<group>"; };
+		34D586712DA42F8C003AAB59 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		34D586732DA435B9003AAB59 /* ErrorBirdDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorBirdDetailViewCell.swift; sourceTree = "<group>"; };
 		34EF6A242DA2EDD3001807AB /* BirdDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdDisplayModel.swift; sourceTree = "<group>"; };
 		34EF6A292DA307DE001807AB /* BirDetailDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirDetailDisplayModel.swift; sourceTree = "<group>"; };
 		34EF6A2B2DA313A3001807AB /* AddNoteBirdDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteBirdDisplayModel.swift; sourceTree = "<group>"; };
@@ -143,7 +155,8 @@
 				2D09E6952CCAD8E100F19817 /* Schema */,
 				2D09E6882CCAD87200F19817 /* birds.graphql */,
 				2D09E69D2CCAD95300F19817 /* notes.graphql */,
-				2D09E6862CCAD69800F19817 /* schema.graphqls */,
+				34D5866B2DA423E9003AAB59 /* bird.graphql */,
+				34D5866D2DA42464003AAB59 /* schema.graphqls */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -151,6 +164,7 @@
 		2D09E68C2CCAD8E100F19817 /* Queries */ = {
 			isa = PBXGroup;
 			children = (
+				34D5866F2DA427AE003AAB59 /* BirdQuery.graphql.swift */,
 				2D09E68B2CCAD8E100F19817 /* BirdsQuery.graphql.swift */,
 			);
 			path = Queries;
@@ -187,6 +201,8 @@
 		2D09E6952CCAD8E100F19817 /* Schema */ = {
 			isa = PBXGroup;
 			children = (
+				34D586672DA423D5003AAB59 /* bird.graphql */,
+				34D586692DA423DE003AAB59 /* bird.graphql */,
 				2D09E68F2CCAD8E100F19817 /* CustomScalars */,
 				2D09E6922CCAD8E100F19817 /* Objects */,
 				2D09E6932CCAD8E100F19817 /* SchemaConfiguration.swift */,
@@ -249,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				34D586632DA40CD7003AAB59 /* GenericLoadingIndicatorView.swift */,
+				34D586712DA42F8C003AAB59 /* Notification.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -349,6 +366,7 @@
 			children = (
 				34D524D52DA048DF00C8961F /* BirdDetailHeaderView.swift */,
 				34D524D72DA0540900C8961F /* BirdDetailViewCell.swift */,
+				34D586732DA435B9003AAB59 /* ErrorBirdDetailViewCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -439,10 +457,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34D586682DA423D5003AAB59 /* bird.graphql in Resources */,
 				2DB8FA2428AD40FA00DF01CC /* LaunchScreen.storyboard in Resources */,
-				2D09E6872CCAD69C00F19817 /* schema.graphqls in Resources */,
+				34D5866A2DA423DE003AAB59 /* bird.graphql in Resources */,
 				2DB8FA2128AD40FA00DF01CC /* Assets.xcassets in Resources */,
+				34D5866C2DA423E9003AAB59 /* bird.graphql in Resources */,
 				2D09E69E2CCAD95B00F19817 /* notes.graphql in Resources */,
+				34D5866E2DA42464003AAB59 /* schema.graphqls in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +490,7 @@
 				348225452D9F113D00094E58 /* BirdCollectionViewCell.swift in Sources */,
 				34D524CE2DA00A0900C8961F /* AddNoteBirdRouter.swift in Sources */,
 				3482255F2D9F1CD800094E58 /* BirdDetailRouter.swift in Sources */,
+				34D586702DA427AE003AAB59 /* BirdQuery.graphql.swift in Sources */,
 				2D09E6A12CCADA6B00F19817 /* AddNoteMutation.graphql.swift in Sources */,
 				2D09E6982CCAD8E100F19817 /* Query.graphql.swift in Sources */,
 				348225372D9EDB5400094E58 /* BirdCloudDataSource.swift in Sources */,
@@ -481,6 +503,7 @@
 				34D524D32DA00A0900C8961F /* AddNoteBirdContract.swift in Sources */,
 				3482253E2D9EDB5400094E58 /* BirdInteractor.swift in Sources */,
 				34D524CB2DA00A0900C8961F /* AddNoteBirdCloudDataSource.swift in Sources */,
+				34D586742DA435B9003AAB59 /* ErrorBirdDetailViewCell.swift in Sources */,
 				3482255D2D9F1CD800094E58 /* BirdDetailFactory.swift in Sources */,
 				3482253B2D9EDB5400094E58 /* BirdViewController.swift in Sources */,
 				2D09E69A2CCAD8E100F19817 /* ID.swift in Sources */,
@@ -502,6 +525,7 @@
 				2DB8FA1A28AD40F900DF01CC /* SceneDelegate.swift in Sources */,
 				34768D902DA4005900ED813D /* BirdViewController+TableView.swift in Sources */,
 				348225382D9EDB5400094E58 /* BirdLocalDataSource.swift in Sources */,
+				34D586722DA42F8C003AAB59 /* Notification.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

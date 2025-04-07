@@ -9,6 +9,10 @@ import UIKit
 // MARK: - BirdDetailViewController
 final class BirdDetailViewController: UIViewController {
     var presenter: BirdDetailViewPresenterProtocol?
+    private var dataNotes = [Notes]()
+    private var notesLoadFailed = false
+    private var noteAddedObserver: NSObjectProtocol?
+    
     private var headerHeightConstraint: NSLayoutConstraint!
     lazy var headerView: BirdDetailHeaderView = {
         let header = BirdDetailHeaderView(frame: .zero)
@@ -22,6 +26,7 @@ final class BirdDetailViewController: UIViewController {
         tv.delegate = self
         tv.dataSource = self
         tv.register(BirdDetailViewCell.self, forCellReuseIdentifier: BirdDetailViewCell.reuseIdentifier)
+        tv.register(ErrorBirdDetailViewCell.self, forCellReuseIdentifier: ErrorBirdDetailViewCell.reuseIdentifier)
         tv.separatorStyle = .none
         return tv
     }()
@@ -61,6 +66,12 @@ final class BirdDetailViewController: UIViewController {
         button.addTarget(self, action: #selector(didTapBackAction), for: .touchUpInside)
         return button
     }()
+    lazy var belowHeaderIndicator: GenericLoadingIndicatorView = {
+        let view = GenericLoadingIndicatorView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isHidden = true
+        return view
+    }()
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -72,6 +83,8 @@ final class BirdDetailViewController: UIViewController {
         view.addSubview(headerView)
         view.addSubview(tableView)
         view.addSubview(addNoteButton)
+        self.dataNotes = presenter?.getNotes() ?? []
+            
         headerHeightConstraint = headerView.heightAnchor.constraint(equalToConstant: 380)
         headerHeightConstraint.isActive = true
         
@@ -99,8 +112,17 @@ final class BirdDetailViewController: UIViewController {
             addNoteButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             addNoteButton.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             addNoteButton.heightAnchor.constraint(equalToConstant: 95)
+            
         ])
         setUpHeaderView()
+        configureNoteAddedObserver()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if let observer = noteAddedObserver {
+            NotificationCenter.default.removeObserver(observer)
+        }
     }
     
     @objc func didTapGoToAddNote() {
@@ -110,11 +132,25 @@ final class BirdDetailViewController: UIViewController {
     @objc func didTapBackAction() {
         presenter?.dismissModule()
     }
+    @objc private func handleNoteAdded() {
+        presenter?.callUpdateNotes()
+
+    }
     func setUpHeaderView() {
         let image = presenter?.getBirdImage() ?? UIImage()
         let title = presenter?.getTitleNav()
         headerView.configure(with: image)
         navBarTitleLabel.text = title
+    }
+    
+    private func configureNoteAddedObserver() {
+        noteAddedObserver = NotificationCenter.default.addObserver(
+            forName: .noteAdded,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            self?.handleNoteAdded()
+        }
     }
 }
 
@@ -122,23 +158,38 @@ final class BirdDetailViewController: UIViewController {
 extension BirdDetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = presenter?.getNotes().count ?? 0
-        if count == 0 {
-            setEmptyBackgroundView(for: tableView)
-            return 0
-        } else {
+        let notes = dataNotes
+
+        switch (notesLoadFailed, dataNotes.count) {
+        case (true, _):
             tableView.backgroundView = nil
-            return count
+            return 1
+        case (false, 0):
+            setEmptyBackgroundView(
+                for: tableView
+            )
+            return 0
+        case (false, _):
+            tableView.backgroundView = nil
+            return notes.count
         }
     }
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: BirdDetailViewCell.reuseIdentifier, for: indexPath) as? BirdDetailViewCell else {
-            return UITableViewCell()
+        if notesLoadFailed {
+            let cell = tableView.dequeueReusableCell(withIdentifier: ErrorBirdDetailViewCell.reuseIdentifier, for: indexPath) as? ErrorBirdDetailViewCell
+            cell?.configureErrorState { [weak self] in
+                self?.notesLoadFailed = false
+                self?.presenter?.callUpdateNotes()
+            }
+            return cell ?? UITableViewCell()
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: BirdDetailViewCell.reuseIdentifier, for: indexPath) as! BirdDetailViewCell
+            let note = dataNotes[indexPath.row]
+            cell.setUpLabel(comment: note.comment)
+            return cell
         }
-        let comment = presenter?.getNotes()[indexPath.row].comment ?? ""
-        cell.setUpLabel(comment: comment)
-        return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -161,10 +212,64 @@ extension BirdDetailViewController: UITableViewDataSource, UITableViewDelegate {
             label.topAnchor.constraint(equalTo: tableView.topAnchor, constant: 48)
         ])
     }
-
 }
-
-
+    
 // MARK: BirdDetailViewProtocol
 extension BirdDetailViewController: BirdDetailViewProtocol {
+    func showLoading() {
+        DispatchQueue.main.async {
+            self.showBelowHeaderIndicator()
+            self.tableView.isHidden = true
+
+        }
+    }
+    
+    func hideLoading() {
+        DispatchQueue.main.async {
+            self.hideBelowHeaderIndicator(after: 2.0)
+
+        }
+    }
+    
+    func showError() {
+        DispatchQueue.main.async { [self] in
+            self.notesLoadFailed = true
+            self.tableView.reloadData()
+        }
+    }
+    
+    func updateNotes(_ notes: [Notes]) {
+        self.notesLoadFailed = false
+        self.dataNotes = notes
+        self.tableView.reloadData()
+    }
+}
+
+extension BirdDetailViewController {
+    func showBelowHeaderIndicator() {
+        belowHeaderIndicator.tag = 999
+        belowHeaderIndicator.startLoading()
+        belowHeaderIndicator.isHidden = false
+        belowHeaderIndicator.updateMessage("Loading comments list...")
+        
+        if belowHeaderIndicator.superview == nil {
+            view.addSubview(belowHeaderIndicator)
+            belowHeaderIndicator.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                belowHeaderIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                belowHeaderIndicator.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 50)
+            ])
+        }
+        
+        tableView.isHidden = true
+    }
+    
+    func hideBelowHeaderIndicator(after delay: TimeInterval = 2.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+            self.belowHeaderIndicator.stopLoading()
+            self.belowHeaderIndicator.removeFromSuperview()
+            self.tableView.isHidden = false
+            self.tableView.reloadData()
+        }
+    }
 }

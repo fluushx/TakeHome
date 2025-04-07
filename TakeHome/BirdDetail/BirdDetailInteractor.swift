@@ -21,6 +21,19 @@ final class BirdDetailInteractor: BirdDetailInteractorProtocol {
 
 // MARK: - BirdDetailPresenterInteractorProtocol
 extension BirdDetailInteractor: BirdDetailPresenterInteractorProtocol {
+    func fetchBirdNotes(id: String, completion: @escaping (Result<[Notes], Error>) -> Void) {
+        cloudDataSource.fetchBirdNotes(id: id) { [weak self] noteResult in
+            switch noteResult {
+            case .success(let notes):
+                _ = self?.localDataSource.updateBirdNotes(birdNotes: notes)
+                completion(.success(notes))
+            case .failure(let error):
+                print("Error fetching notes: \(error)")
+                completion(.failure(error))
+            }
+        }
+    }
+
     func getBirdDetailData() -> BirDetailDisplayModel {
         localDataSource.getBirdDetailData()
     }

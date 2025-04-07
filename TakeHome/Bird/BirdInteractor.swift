@@ -27,7 +27,7 @@ extension BirdInteractor: BirdPresenterInteractorProtocol {
                               batchSize: Int,
                               onBatch: @escaping ([BirdDisplayModel]) -> Void,
                               completion: @escaping ([BirdDisplayModel]) -> Void) {
-        var mutableBirds = birds
+        let mutableBirds = birds
         let endIndex = min(index + batchSize, mutableBirds.count)
         let group = DispatchGroup()
         

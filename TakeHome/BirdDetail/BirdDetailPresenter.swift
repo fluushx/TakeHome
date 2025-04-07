@@ -49,4 +49,23 @@ extension BirdDetailPresenter: BirdDetailViewPresenterProtocol {
     func getTitleNav() -> String {
         interactor.getBirdDetailData().title ?? ""
     }
+    func callUpdateNotes() {
+        view?.showLoading()
+        let birdId = interactor.getBirdDetailData().birdId ?? ""
+        interactor.fetchBirdNotes(id: birdId) { [weak self] result in
+            DispatchQueue.main.async {
+                guard let self = self else {
+                    return
+                }
+                self.view?.hideLoading()
+                switch result {
+                case .success(let notes):
+                    self.view?.updateNotes(notes)
+                case .failure:
+                    self.view?.showError()
+                }
+            }
+        }
+    }
+    
 }

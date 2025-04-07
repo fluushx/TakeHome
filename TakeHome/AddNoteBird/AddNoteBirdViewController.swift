@@ -152,6 +152,7 @@ extension AddNoteBirdViewController: AddNoteBirdViewProtocol {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             self.sendingCommentView.showSuccess()
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                NotificationCenter.default.post(name: .noteAdded, object: nil)
                 self.sendingCommentView.stopLoading()
                 self.textField.isEnabled = true
                 self.textField.text = ""

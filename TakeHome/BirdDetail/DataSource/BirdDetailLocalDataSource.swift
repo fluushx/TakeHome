@@ -27,5 +27,17 @@ final class BirdDetailLocalDataSource: BirdDetailLocalDataSourceProtocol {
             title: birdTitle
         )
     }
-
+    func updateBirdNotes(birdNotes: [Notes]) -> BirdDisplayModel {
+        selectedBird?.notes = birdNotes
+        
+        return selectedBird ?? BirdDisplayModel(
+            id: "",
+            thumbURL: nil,
+            imageURL: nil,
+            latinName: nil,
+            englishName: nil,
+            notes: nil,
+            image: nil
+        )
+    }
 }

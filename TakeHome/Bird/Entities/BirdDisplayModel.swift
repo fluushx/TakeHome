@@ -14,7 +14,7 @@ final class BirdDisplayModel {
     let imageURL: URL?
     let latinName: String?
     let englishName: String?
-    let notes: [Notes]?
+    var notes: [Notes]?
     var image: UIImage?
     var isImageLoaded: Bool = false
     init(id: String?, thumbURL: URL?, imageURL: URL?, latinName: String?, englishName: String?, notes: [Notes]?, image: UIImage?, isImageLoaded: Bool = false) {
