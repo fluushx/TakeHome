@@ -8,6 +8,6 @@
 import Foundation
 
 public enum BirdConstants {
-    static let accessToken = "cXdP3HwiAio1trBSPdWA"
+    static let accessToken = "INSERT-ACCESS-TOKEN"
     static let url = "https://takehome.graphql.copilot.money"
 }
