@@ -41,6 +41,9 @@ final class BirdCollectionViewCell: UICollectionViewCell, BirdCollectionViewCell
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isHidden = true
         label.textColor = .white
+        label.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
+        label.layer.cornerRadius = 10
+        label.clipsToBounds = true   
         return label
     }()
     
