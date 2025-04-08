@@ -8,25 +8,36 @@
 import XCTest
 @testable import TakeHome
 
+struct AddNoteResponse: Decodable {
+    let data: AddNoteResult
+}
+
+struct AddNoteResult: Decodable {
+    let addNote: Bool
+}
+
 // MARK: - Cloud Data Source Mock
 final class AddNoteBirdCloudDataSourceMock: AddNoteBirdCloudDataSourceProtocol {
-    // Flag to simulate success or failure.
-    var shouldReturnSuccess: Bool = true
-    // Expected result value (true for success).
-    var expectedResult: Bool = true
-
     func callAddNoteBird(birdId: String, comment: String, timestamp: Int, completion: @escaping (Result<Bool, Error>) -> Void) {
-        // Ignore parameters and simulate a response based on the flag.
-        if shouldReturnSuccess {
-            completion(.success(expectedResult))
-        } else {
-            let error = NSError(domain: "Test", code: 1, userInfo: nil)
+        // Look for the "addNoteResponse.json" file in the test bundle.
+        guard let url = Bundle(for: AddNoteBirdCloudDataSourceMock.self)
+                .url(forResource: "BirdNoteResponse", withExtension: "json") else {
+            completion(.failure(NSError(domain: "Test", code: 1, userInfo: [NSLocalizedDescriptionKey: "JSON file not found"])))
+            return
+        }
+        
+        do {
+            let data = try Data(contentsOf: url)
+            // Decode the JSON response
+            let decodedResponse = try JSONDecoder().decode(AddNoteResponse.self, from: data)
+            // Return the boolean value from the response.
+            completion(.success(decodedResponse.data.addNote))
+        } catch {
             completion(.failure(error))
         }
     }
     
     func callAddNoteBirdAsync(birdId: String, comment: String, timestamp: Int) async throws -> Bool {
-        // Wrap the synchronous method in an async context.
         return try await withCheckedThrowingContinuation { continuation in
             self.callAddNoteBird(birdId: birdId, comment: comment, timestamp: timestamp) { result in
                 continuation.resume(with: result)
@@ -48,8 +59,6 @@ final class AddNoteBirdInteractorTests: XCTestCase {
         )
         let localDataSource = AddNoteBirdLocalDataSource(addNoteDataModel: testModel)
         let cloudDataSourceMock = AddNoteBirdCloudDataSourceMock()
-        cloudDataSourceMock.shouldReturnSuccess = true
-        cloudDataSourceMock.expectedResult = true
         
         let interactor = AddNoteBirdInteractor(
             localDataSource: localDataSource,
@@ -63,7 +72,7 @@ final class AddNoteBirdInteractorTests: XCTestCase {
         )
         
         // Then: Assert that the result is true.
-        XCTAssertTrue(result, "The add note call should return true")
+        XCTAssertTrue(result, "The add note call should return true based on the JSON response")
     }
     
     // Test the local data source getters via the interactor.

@@ -24,6 +24,7 @@
 		2DB8FA1A28AD40F900DF01CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB8FA1928AD40F900DF01CC /* SceneDelegate.swift */; };
 		2DB8FA2128AD40FA00DF01CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DB8FA2028AD40FA00DF01CC /* Assets.xcassets */; };
 		2DB8FA2428AD40FA00DF01CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DB8FA2228AD40FA00DF01CC /* LaunchScreen.storyboard */; };
+		34163D612DA4AD2000C3386B /* BirdNoteResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 34163D602DA4AD2000C3386B /* BirdNoteResponse.json */; };
 		346E4D202DA468E200C508CF /* BirdDetailInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346E4D1F2DA468E200C508CF /* BirdDetailInteractorTest.swift */; };
 		346E4D222DA468F900C508CF /* BirdResponse200.json in Resources */ = {isa = PBXBuildFile; fileRef = 346E4D212DA468F900C508CF /* BirdResponse200.json */; };
 		346E4D252DA46C2000C508CF /* BirdAddNoteInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346E4D242DA46C2000C508CF /* BirdAddNoteInteractorTest.swift */; };
@@ -105,6 +106,7 @@
 		2DB8FA2028AD40FA00DF01CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2DB8FA2328AD40FA00DF01CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DB8FA2528AD40FA00DF01CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34163D602DA4AD2000C3386B /* BirdNoteResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BirdNoteResponse.json; sourceTree = "<group>"; };
 		346E4D1F2DA468E200C508CF /* BirdDetailInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdDetailInteractorTest.swift; sourceTree = "<group>"; };
 		346E4D212DA468F900C508CF /* BirdResponse200.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BirdResponse200.json; sourceTree = "<group>"; };
 		346E4D242DA46C2000C508CF /* BirdAddNoteInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirdAddNoteInteractorTest.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 		346E4D232DA46C0200C508CF /* BirdAddNoteInteractorTest */ = {
 			isa = PBXGroup;
 			children = (
+				34163D602DA4AD2000C3386B /* BirdNoteResponse.json */,
 				346E4D242DA46C2000C508CF /* BirdAddNoteInteractorTest.swift */,
 			);
 			path = BirdAddNoteInteractorTest;
@@ -566,6 +569,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34163D612DA4AD2000C3386B /* BirdNoteResponse.json in Resources */,
 				346E4D222DA468F900C508CF /* BirdResponse200.json in Resources */,
 				34D586832DA44F40003AAB59 /* BirdsResponse200.json in Resources */,
 			);
